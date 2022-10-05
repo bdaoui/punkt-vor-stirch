@@ -6,14 +6,14 @@ import Intro from './components/intro';
 import Navbar from './components/navbar';
 import Partners from './components/partners';
 import Statistics from './components/statistics';
-
+import Team from "./components/team"
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Intro />
       <Statistics />
-
+      <Team /> 
       {/* <Icons />
       <Contact />
       <Partners />

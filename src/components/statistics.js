@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const Statistics = () => {
+
+
   return (
     <div class="flex flex-col h-full m-14 md:m-30 lg:mx-80"> 
     
@@ -19,19 +21,19 @@ const Statistics = () => {
         </div>
 
         <div class="md:w-1/2 lg:w-1/4">
-          <h1 class="text-base md:text-3xl mb-2">62</h1>
+          <h1 class="text-base md:text-3xl mb-2">62%</h1>
           <h2 class="font-bold	text-sm">OF AUTHORIZED CARS</h2>
           <p class="text-gray-500">are approved for men in Germany. Women rely on public transport</p>
         </div>
 
         <div class="md:w-1/2 lg:w-1/4">
-          <h1 class="text-base md:text-3xl mb-2">18</h1>
+          <h1 class="text-base md:text-3xl mb-2">18%</h1>
           <h2 class="font-bold	text-sm">THE CAR-SHARING USER</h2>
           <p class="text-gray-500">are women, a potential that can be strengthened through more practicability</p>
         </div>
 
         <div class="md:w-1/2 lg:w-1/4">
-          <h1 class="text-base md:text-3xl mb-2">71</h1>
+          <h1 class="text-base md:text-3xl mb-2">71%</h1>
           <h2 class="font-bold	text-sm">HIGHER RISK</h2>
           <p class="text-gray-500">for women to be injured in traffic accidents, because offers are not tailored to them</p>
         </div>
