@@ -13,8 +13,8 @@ function App() {
       <Navbar />
       <Intro />
       <Statistics />
-
-      {/* <Icons />
+      <Icons />
+      {/* 
       <Contact />
       <Partners />
       <Footer />  */}
