@@ -2,17 +2,18 @@ import React, {useState} from "react";
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  
 
   return (
     <div>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3">
+      <nav className="relative flex flex-wrap items-center justify-between px-2 bg-white mb-3 drop-shadow-xl">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-black"
-              href="#pablo"
+              href="/"
             >
-              <img className="object-scale-down h-16 w-36" src="https://www.punkt-vor-strich.at/assets/images/pvs_vlogo.png" alt="logo"/>
+              <img className="object-scale-down h-6 w-20" src={process.env.PUBLIC_URL + "/pvs_vlogo.png"} alt="logo"/>
             </a>
             <button
               className="text-black cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -45,7 +46,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="#pablo"
+                  href="#icons"
                 >
                   <i className="fab fa-facebook-square text-lg leading-lg text-black opacity-75"></i>
                   <span className="ml-2">Leistungen</span>
@@ -54,7 +55,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="#pablo"
+                  href="#team"
                 >
                   <i className="fab fa-twitter text-lg leading-lg text-black opacity-75"></i>
                   <span className="ml-2">Team</span>
@@ -63,7 +64,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="#pablo"
+                  href="#partner"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-black opacity-75"></i>
                   <span className="ml-2">Partner</span>
@@ -72,7 +73,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="#pablo"
+                  href="/blog"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-black opacity-75"></i>
                   <span className="ml-2">Bloggen</span>
@@ -81,7 +82,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="#pablo"
+                  href="#contact"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-black opacity-75"></i>
                   <span className="ml-2 underline">Kontakt</span>

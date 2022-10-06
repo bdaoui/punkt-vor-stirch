@@ -15,7 +15,7 @@ const Intro = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row justify-between items-center m-14 md:m-44 lg:m-52 h-2/4">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl basis-2/4 underline p-9">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl basis-2/4 underline decoration-pink-800 p-9" >
           Wir bringen es auf den PUNKT.
         </h1>
 
