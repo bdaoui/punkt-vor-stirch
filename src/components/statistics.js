@@ -11,12 +11,12 @@ const Statistics = () => {
           in der Mobilität zu werfen. Nur so können Angebote diverser und
           nachhaltiger gestaltet werden!
         </p>
-        <p className="underline decoration-pink-800 text-4xl md:text-5xl m-5">Faktencheck</p>
+        <p className="underline decoration-pink text-4xl md:text-5xl m-5">Faktencheck</p>
       </div>
 
       <div className="flex justify-between justify-items-start flex-col md:flex-row flex-wrap text-base text-left">
         <div className="md:w-1/2 lg:w-1/4">
-          <h1 className="text-base md:text-3xl mb-2 text-pink-800 pt-4">30%</h1>
+          <h1 className="text-base md:text-3xl mb-2 text-pink pt-4">30%</h1>
           <h2 className="font-bold	text-sm">DER CO2-EMISSIONEN</h2>
           <p className="text-gray-500">
             sind global betrachtet auf den Verkehr zurückzuführen
@@ -24,7 +24,7 @@ const Statistics = () => {
         </div>
 
         <div className="md:w-1/2 lg:w-1/4">
-          <h1 className="text-base md:text-3xl mb-2 text-pink-800 pt-4">62%</h1>
+          <h1 className="text-base md:text-3xl mb-2 text-pink pt-4">62%</h1>
 
           <h2 className="font-bold	text-sm">DER ZUGELASSENEN AUTOS</h2>
           <p className="text-gray-500">
@@ -35,7 +35,7 @@ const Statistics = () => {
         </div>
 
         <div className="md:w-1/2 lg:w-1/4">
-          <h1 className="text-base md:text-3xl mb-2 text-pink-800 pt-4">18%</h1>
+          <h1 className="text-base md:text-3xl mb-2 text-pink pt-4">18%</h1>
 
           <h2 className="font-bold	text-sm">DER CAR-SHARING USER</h2>
           <p className="text-gray-500">
@@ -45,7 +45,7 @@ const Statistics = () => {
         </div>
 
         <div className="md:w-1/2 lg:w-1/4">
-          <h1 className="text-base md:text-3xl mb-2 text-pink-800 pt-4">71%</h1>
+          <h1 className="text-base md:text-3xl mb-2 text-pink pt-4">71%</h1>
           <h2 className="font-bold	text-sm">HÖHERES RISIKO</h2>
           <p className="text-gray-500">
             für Frauen bei Verkehrsunfällen verletzt zu werden, denn Angebote

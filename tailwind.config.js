@@ -9,8 +9,11 @@ module.exports = {
     },
     extend: {
       dropShadow: {
-        'xl': '0 10px 10px rgba(157, 23, 77, 0.1)',
-      }
+        'xl': '0 10px 10px rgba(164, 28, 92, 0.1)',
+      },
+      colors: {
+        'pink': '#a41c5c',
+      },
     },
   },
   plugins: [],
