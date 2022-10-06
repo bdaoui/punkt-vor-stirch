@@ -11,8 +11,8 @@ const Team = () => {
   };
 
   return (
-    <div className="flex flex-col text-center h-full" id="team">
-      <h1 className="text-4xl font-semibold">Hinter den Kulissen</h1>
+    <div className="flex flex-col text-center h-full md:h-screen" id="team">
+      <h1 className="text-4xl md:text-5xl font-semibold underline decoration-pink-800">Hinter den Kulissen</h1>
       <p className="text-center p-10 lg:px-96">
         Wir sind ein Team aus Expertinnen mit langjähriger Erfahrung in
         Forschung, Innovation und Technologie mit Schwerpunkt Mobilität. Wir

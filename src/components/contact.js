@@ -5,7 +5,7 @@ const Contact = () => {
   
   return (
     <div className='mb-0 pb-10' id="contact">
-        <h2 className='text-5xl text-center my-10'>Get in touch!</h2>
+        <h2 className='text-4xl md:text-5xl text-center my-10 underline decoration-pink-800'>Get in touch!</h2>
         
     <div className='flex flex-col md:flex-row justify-center text-center gap-20'>
 
