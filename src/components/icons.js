@@ -2,7 +2,7 @@ import React from "react";
 
 const Icons = () => {
   return (
-    <div className="h-full" id="icons">
+    <div className="h-full md:h-screen" id="icons">
       <h1 className="text-center align-middle text-4xl mb-10 underline decoration-pink-800 md:text-5xl m-5">WHAT WE DO</h1>
 
       <div className="flex flex-col md:flex-row md:justify-center ml-20 md:ml-0 p-10 text-center ">

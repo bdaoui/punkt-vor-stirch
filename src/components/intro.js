@@ -5,11 +5,18 @@ const Intro = () => {
     <div className="h-full">
       <div className="relative pb-5 h-2/4">
         <img
-          src="https://images.unsplash.com/photo-1664829698872-d25e65dc302d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1931&q=80"
+          src={process.env.PUBLIC_URL + "/pvs_Team_2.jpg"}
           alt="hello world"
-          style={{ height: "400px", width: "100%" }}
+          style={{width: "100%" }}
+          className="hidden md:block"
         />
-        <h1 className="absolute text-5xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <img
+          src={process.env.PUBLIC_URL + "/pvs_Team2.jpg"}
+          alt="hello world"
+          style={{width: "100%" }}
+          className="block md:hidden"
+        />
+        <h1 className="absolute text-xl md:text-5xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         Nachhaltige Mobilität von morgen
         </h1>
       </div>
