@@ -21,7 +21,7 @@ const Team = () => {
         mitnehmen und nutzbar machen.
       </p>
 
-      <div className="flex flex-col md:flex-row md:gap-2 justify-between items-center mt-24 px-10 md:px-96">
+      <div className="flex flex-col md:flex-row md:gap-2 justify-between items-center mt-24 px-10 md:px-96 flex-wrap">
 
 
 
@@ -30,14 +30,14 @@ const Team = () => {
           onMouseOver={(e) => handleHover("Lina")}
           onMouseLeave={(e) => setShowSocial([false, ""])}
         >
-        <div class="overflow-hidden max-w-xs sm:w-56 md:max-w-xs">
+        <div class="overflow-hidden w-80 md:w-56  lg:w-80">
 
           <img
             src={process.env.PUBLIC_URL + "/pvs_Team_Lina_Portrait.jpg"}
             alt="Lina MOSSHAMMER"
             className={
               showSocial[0] && showSocial[1] === "Lina"
-                ? "		  overflow-hidden grayscale scale-110 transition-all duration-500 ease-in-out  "  
+                ? " overflow-hidden grayscale scale-110 transition-all duration-500 ease-in-out  "  
                 : "	"
             }
           />
