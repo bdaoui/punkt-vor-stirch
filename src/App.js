@@ -13,8 +13,9 @@ function App() {
       <Navbar />
       <Intro />
       <Statistics />
+
       <Team /> 
-      {/* <Icons />
+      {/* <Icons /> 
       <Contact />
       <Partners />
       <Footer />  */}
