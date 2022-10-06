@@ -16,10 +16,10 @@ function App() {
       <Icons /> 
       <Team /> 
       <Partners />
-      {/* 
+      
       <Contact />
       
-      <Footer />  */}
+    {/* <Footer />  */}
     </div>
   );
 }
