@@ -3,12 +3,13 @@ import React, {useState} from 'react'
 
 const Team = () => {
   
-const [showSocial, setShowSocial] = useState(false);
+const [showSocial, setShowSocial] = useState([false, ""]);
 
-const handleHover = () =>{
-  setShowSocial(!showSocial)
+const handleHover = (member) =>{
+  console.log(showSocial)
+ if(!showSocial[0]){ setShowSocial([true, member]) }
+
 }
-console.log(showSocial)
 
 
   return (
@@ -18,15 +19,15 @@ console.log(showSocial)
         <p class="text-center p-10 lg:px-96">Wir sind ein Team aus Expertinnen mit langjähriger Erfahrung in Forschung, Innovation und Technologie mit Schwerpunkt Mobilität. Wir verstehen uns als Begleiterinnen und Ermöglicher. Auf der Reise wollen wir alle Bedürfnisse - soziologisch, ökonomisch und ökologisch - mitnehmen und nutzbar machen.</p>
 
 
-      <div class="flex flex-col md:flex-row justify-between items-center mt-24 px-10 md:px-96">
+      <div class="flex flex-col md:flex-row justify-between items-center mt-24 px-10 md:px-96" >
 
-        <div>
-            <img src={process.env.PUBLIC_URL+"/pvs_Team_Lina_Portrait.jpg"} alt="Lina MOSSHAMMER" class="max-w-xs" onMouseEnter={ (e) => handleHover } onMouseOut={(e) => handleHover}/>
+        <div onMouseOver={ (e) => handleHover("Lina")}  onMouseLeave={(e) => setShowSocial([false, ""])}>
+            <img src={process.env.PUBLIC_URL+"/pvs_Team_Lina_Portrait.jpg"} alt="Lina MOSSHAMMER" class="max-w-xs hover:opacity-60" />
             <h2 class="font-bold	text-lg">Lina MOSSHAMMER</h2>
             <h3 class="text-gray-500">Chief Executive Officer</h3>
             <h3 class="text-gray-500">Co-Founder</h3>
 
-            {showSocial && 
+            {showSocial[0] && showSocial[1] === "Lina" &&  
               <div class="relative inset-x-1/6 bottom-80  flex gap-2 items-center justify-center">
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="  text-red fill-current  w-5  ">
