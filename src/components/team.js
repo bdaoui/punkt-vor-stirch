@@ -11,8 +11,8 @@ const Team = () => {
   };
 
   return (
-    <div className="flex flex-col text-center h-full">
-      <h1>Hinter den Kulissen</h1>
+    <div className="flex flex-col text-center h-full" id="team">
+      <h1 className="text-4xl font-semibold">Hinter den Kulissen</h1>
       <p className="text-center p-10 lg:px-96">
         Wir sind ein Team aus Expertinnen mit langjähriger Erfahrung in
         Forschung, Innovation und Technologie mit Schwerpunkt Mobilität. Wir
@@ -21,16 +21,13 @@ const Team = () => {
         mitnehmen und nutzbar machen.
       </p>
 
-      <div className="flex flex-col md:flex-row md:gap-2  items-center mt-24 px-10 md:m-auto  ">
-
-
-
+      <div className="flex flex-col md:flex-row md:gap-10  items-center mt-24 px-10 md:m-auto  ">
 
         <div
           onMouseOver={(e) => handleHover("Lina")}
           onMouseLeave={(e) => setShowSocial([false, ""])}
         >
-        <div class="overflow-hidden w-80 md:w-56  lg:w-80">
+        <div className="overflow-hidden w-80 md:w-56  lg:w-80">
 
           <img
             src={process.env.PUBLIC_URL + "/pvs_Team_Lina_Portrait.jpg"}
@@ -43,8 +40,8 @@ const Team = () => {
           />
         </div>
           <h2 className="font-bold	text-lg">Lina MOSSHAMMER</h2>
-          <h3 className="text-gray-500">Chief Executive Officer</h3>
-          <h3 className="text-gray-500">Co-Founder</h3>
+          <h3 className="text-pink-800">Chief Executive Officer</h3>
+          <h3 className="text-pink-800">Co-Founder</h3>
 
           {showSocial[0] && showSocial[1] === "Lina" && (
             <div className="relative inset-x-3 bottom-80  flex  ">
@@ -75,7 +72,7 @@ const Team = () => {
           onMouseOver={(e) => handleHover("Claudia")}
           onMouseLeave={(e) => setShowSocial([false, ""])}
         >
-        <div class="overflow-hidden w-80 md:w-56  lg:w-80">
+        <div className="overflow-hidden w-80 md:w-56  lg:w-80">
 
           <img
             src={process.env.PUBLIC_URL + "/pvs_Team_Claudia_Portrait.jpg"}
@@ -88,8 +85,8 @@ const Team = () => {
           />
         </div>
           <h2 className="font-bold	text-lg">Claudia FALKINGER</h2>
-          <h3 className="text-gray-500">Chief Strategy Officer</h3>
-          <h3 className="text-gray-500">Co-Founder</h3>
+          <h3 className="text-pink-800">Chief Strategy Officer</h3>
+          <h3 className="text-pink-800">Co-Founder</h3>
 
           {showSocial[0] && showSocial[1] === "Claudia" && (
             <div className="relative inset-x-3 bottom-80  flex  ">
@@ -124,7 +121,7 @@ const Team = () => {
           onMouseOver={(e) => handleHover("Nadin")}
           onMouseLeave={(e) => setShowSocial([false, ""])}
         >
-        <div class="overflow-hidden w-80 md:w-56  lg:w-80">
+        <div className="overflow-hidden w-80 md:w-56  lg:w-80">
 
           <img
             src={process.env.PUBLIC_URL + "/pvs_Team_Nadin_Portrait2.jpg"}
@@ -137,8 +134,8 @@ const Team = () => {
           />
         </div>
           <h2 className="font-bold	text-lg">Nadin BRUNNHOFER</h2>
-          <h3 className="text-gray-500">Chief Technology Officer</h3>
-          <h3 className="text-gray-500">Co-Founder</h3>
+          <h3 className="text-pink-800">Chief Technology Officer</h3>
+          <h3 className="text-pink-800">Co-Founder</h3>
 
           {showSocial[0] && showSocial[1] === "Nadin" && (
             <div className="relative inset-x-3 bottom-80  flex  ">
