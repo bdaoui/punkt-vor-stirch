@@ -15,12 +15,12 @@ function App() {
       <Statistics />
       <Icons /> 
       <Team /> 
-      <Partners /> 
+      <Partners />
       <Contact />
       {/* 
      
       
-      <Footer />  */}
+    {/* <Footer />  */}
     </div>
   );
 }
