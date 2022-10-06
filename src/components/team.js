@@ -22,13 +22,13 @@ const handleHover = (member) =>{
       <div class="flex flex-col md:flex-row justify-between items-center mt-24 px-10 md:px-96" >
 
         <div onMouseOver={ (e) => handleHover("Lina")}  onMouseLeave={(e) => setShowSocial([false, ""])}>
-            <img src={process.env.PUBLIC_URL+"/pvs_Team_Lina_Portrait.jpg"} alt="Lina MOSSHAMMER" class="max-w-xs hover:opacity-60" />
+            <img src={process.env.PUBLIC_URL+"/pvs_Team_Lina_Portrait.jpg"} alt="Lina MOSSHAMMER" class={(showSocial[0] ? "max-w-xs opacity-60" : "max-w-xs")} />
             <h2 class="font-bold	text-lg">Lina MOSSHAMMER</h2>
             <h3 class="text-gray-500">Chief Executive Officer</h3>
             <h3 class="text-gray-500">Co-Founder</h3>
 
             {showSocial[0] && showSocial[1] === "Lina" &&  
-              <div class="relative inset-x-1/6 bottom-80  flex gap-2 items-center justify-center">
+              <div class="relative inset-x-1/6 bottom-80  flex gap-2 items-center justify-center ">
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="  text-red fill-current  w-5  ">
                   <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
