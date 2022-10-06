@@ -21,7 +21,7 @@ const Team = () => {
         mitnehmen und nutzbar machen.
       </p>
 
-      <div className="flex flex-col md:flex-row md:gap-2 justify-between items-center mt-24 px-10 md:px-96 flex-wrap">
+      <div className="flex flex-col md:flex-row md:gap-2  items-center mt-24 px-10 md:m-auto  ">
 
 
 
@@ -75,15 +75,15 @@ const Team = () => {
           onMouseOver={(e) => handleHover("Claudia")}
           onMouseLeave={(e) => setShowSocial([false, ""])}
         >
-        <div class="overflow-hidden">
+        <div class="overflow-hidden w-80 md:w-56  lg:w-80">
 
           <img
             src={process.env.PUBLIC_URL + "/pvs_Team_Claudia_Portrait.jpg"}
             alt="Claudia FALKINGER"
             className={
               showSocial[0] && showSocial[1] === "Claudia"
-                ? "max-w-xs max-h-fit overflow-hidden grayscale scale-110 transition-all duration-500 ease-in-out  "
-                : "max-w-xs"
+                ? " max-h-fit overflow-hidden grayscale scale-110 transition-all duration-500 ease-in-out  "
+                : ""
             }
           />
         </div>
@@ -124,15 +124,15 @@ const Team = () => {
           onMouseOver={(e) => handleHover("Nadin")}
           onMouseLeave={(e) => setShowSocial([false, ""])}
         >
-        <div class="overflow-hidden">
+        <div class="overflow-hidden w-80 md:w-56  lg:w-80">
 
           <img
             src={process.env.PUBLIC_URL + "/pvs_Team_Nadin_Portrait2.jpg"}
             alt="Nadin BRUNNHOFER"
             className={
               showSocial[0] && showSocial[1] === "Nadin"
-                ? "max-w-xs max-h-fit overflow-hidden grayscale scale-110 transition-all duration-500 ease-in-out  "
-                : "max-w-xs"
+                ? "max-h-fit overflow-hidden grayscale scale-110 transition-all duration-500 ease-in-out  "
+                : ""
             }
           />
         </div>
