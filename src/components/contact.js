@@ -36,7 +36,7 @@ const Contact = () => {
     </div>
 
     <div className="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 my-12 bg-white border-2 border-pink rounded">
-              <p className="text-3xl font-bold leading-7 text-center text-black m-5">Kontakt</p>
+              <p className="text-3xl font-bold leading-7 text-center text-black m-5 pt-10">Kontakt</p>
             <form action="" method="post">
                 <div className="md:flex items-center mt-12  ">
                     <div className="w-full md:w-1/2 flex flex-col">
@@ -71,7 +71,7 @@ const Contact = () => {
                         <textarea type="text" className="h-40 text-base leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" ></textarea>
                     </div>
                 </div>
-                <div className="flex items-center justify-center w-full">
+                <div className="flex items-center justify-center w-full pb-10">
                     <button className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-pink rounded hover:bg-pink focus:ring-2 focus:ring-offset-2 focus:ring-pink focus:outline-none m-5">
                         Send message
                     </button>
