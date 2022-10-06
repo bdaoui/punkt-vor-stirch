@@ -2,7 +2,7 @@ import React from 'react'
 
 const Partners = () => {
   return (
-    <div className="h-full bg-gray-100 my-10 mx-4">
+    <div className="h-full bg-gray-100 my-10 mx-4 p-10">
       <div className='text-center mb-10'>
         <h1 className='text-3xl mb-4'>Gemeinsam Stark</h1>
         <p className='text-base text-gray-500'>Gemeinsam mit unseren Kooperationspartnern schaffen und gestalten wir ein neues und inklusiveres Bild der Mobilität.</p>
