@@ -12,7 +12,7 @@ const Team = () => {
 
   return (
     <div className="flex flex-col text-center h-full md:h-screen" id="team">
-      <h1 className="text-4xl md:text-5xl font-semibold underline decoration-pink-800">Hinter den Kulissen</h1>
+      <h1 className="text-4xl md:text-5xl font-semibold underline decoration-pink">Hinter den Kulissen</h1>
       <p className="text-center p-10 lg:px-96">
         Wir sind ein Team aus Expertinnen mit langjähriger Erfahrung in
         Forschung, Innovation und Technologie mit Schwerpunkt Mobilität. Wir
@@ -40,8 +40,8 @@ const Team = () => {
           />
         </div>
           <h2 className="font-bold	text-lg">Lina MOSSHAMMER</h2>
-          <h3 className="text-pink-800">Chief Executive Officer</h3>
-          <h3 className="text-pink-800">Co-Founder</h3>
+          <h3 className="text-pink">Chief Executive Officer</h3>
+          <h3 className="text-pink">Co-Founder</h3>
 
           {showSocial[0] && showSocial[1] === "Lina" && (
             <div className="relative inset-x-3 bottom-80  flex  ">
@@ -85,8 +85,8 @@ const Team = () => {
           />
         </div>
           <h2 className="font-bold	text-lg">Claudia FALKINGER</h2>
-          <h3 className="text-pink-800">Chief Strategy Officer</h3>
-          <h3 className="text-pink-800">Co-Founder</h3>
+          <h3 className="text-pink">Chief Strategy Officer</h3>
+          <h3 className="text-pink">Co-Founder</h3>
 
           {showSocial[0] && showSocial[1] === "Claudia" && (
             <div className="relative inset-x-3 bottom-80  flex  ">
@@ -134,8 +134,8 @@ const Team = () => {
           />
         </div>
           <h2 className="font-bold	text-lg">Nadin BRUNNHOFER</h2>
-          <h3 className="text-pink-800">Chief Technology Officer</h3>
-          <h3 className="text-pink-800">Co-Founder</h3>
+          <h3 className="text-pink">Chief Technology Officer</h3>
+          <h3 className="text-pink">Co-Founder</h3>
 
           {showSocial[0] && showSocial[1] === "Nadin" && (
             <div className="relative inset-x-3 bottom-80  flex  ">
