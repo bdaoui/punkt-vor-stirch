@@ -12,7 +12,7 @@ const Navbar = () => {
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-black"
               href="#pablo"
             >
-              <img class="object-scale-down h-16 w-36" src="https://www.punkt-vor-strich.at/assets/images/pvs_vlogo.png" alt="logo"/>
+              <img className="object-scale-down h-16 w-36" src="https://www.punkt-vor-strich.at/assets/images/pvs_vlogo.png" alt="logo"/>
             </a>
             <button
               className="text-black cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -20,7 +20,7 @@ const Navbar = () => {
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
               <svg
-                class="w-6 h-6"
+                className="w-6 h-6"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -48,7 +48,7 @@ const Navbar = () => {
                   href="#pablo"
                 >
                   <i className="fab fa-facebook-square text-lg leading-lg text-black opacity-75"></i>
-                  <span className="ml-2">Services</span>
+                  <span className="ml-2">Leistungen</span>
                 </a>
               </li>
               <li className="nav-item">
@@ -66,7 +66,7 @@ const Navbar = () => {
                   href="#pablo"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-black opacity-75"></i>
-                  <span className="ml-2">Partners</span>
+                  <span className="ml-2">Partner</span>
                 </a>
               </li>
               <li className="nav-item">
@@ -75,7 +75,7 @@ const Navbar = () => {
                   href="#pablo"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-black opacity-75"></i>
-                  <span className="ml-2">Blog</span>
+                  <span className="ml-2">Bloggen</span>
                 </a>
               </li>
               <li className="nav-item">
@@ -84,7 +84,7 @@ const Navbar = () => {
                   href="#pablo"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-black opacity-75"></i>
-                  <span className="ml-2 underline">Contact us</span>
+                  <span className="ml-2 underline">Kontakt</span>
                 </a>
               </li>
 
