@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import {AuthContext} from "../context/auth.context"
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [identifier, setIdentifier] = useState("")
@@ -12,14 +12,14 @@ const Login = () => {
     const handleSubmit = (e) =>{
         e.preventDefault();
     
-    axios.post("http://localhost:5005/admin/login", {identifier, password})
-        .then(response => {
+         axios.post("http://localhost:5005/admin/login", {identifier, password})
+            .then(response => {
                 console.log("JWT token", response.data.authToken);
                 setToken(response.data.authToken);
                 authenticateUser()
-        })
-        .catch(err => console.log(err))
-
+             })
+             .then(response => navigate("/"))
+             .catch(err => console.log(err))
 
     }
 
@@ -33,15 +33,15 @@ const Login = () => {
       <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Admin Access</h2>
      
     </div>
-    <form class="mt-8 space-y-6" action="#" method="POST">
+    <form class="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div class="-space-y-px rounded-md shadow-sm">
         <div>
-          <label for="identifier" class="sr-only">identifier</label>
-          <input id="identifier" name="text" type="text" autocomplete="email" required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm" placeholder="Identifier" />
+          <label for="identifier" class="sr-only">Identifier</label>
+          <input id="identifier" name="identifier" type="identifier" autocomplete="identifier" required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm" placeholder="identifier" value={identifier} onChange={(e) => setIdentifier(e.target.value)} />
         </div>
         <div>
           <label for="password" class="sr-only">Password</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm" placeholder="Password" />
+          <input id="password" name="password" type="password" autocomplete="current-password" required class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
       </div>
 
@@ -63,20 +63,4 @@ const Login = () => {
     }
     
     export default Login
-    // <div>Login
-
-
-    
-    
-    // <form onSubmit={handleSubmit}>
-    //     <label for="identifier"> Identifier
-    //         <input type="text" name="identifier" value={identifier} onChange={(e) => setIdentifier(e.target.value)} />
-    //     </label>
-    //     <label for="password">
-    //         <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-    //     </label>
-    //     <button type='submit'>Log In</button>
-    // </form>
-    
-    
-    // </div>
+   
