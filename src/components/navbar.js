@@ -1,11 +1,14 @@
 import React, {useContext, useState} from "react";
 import { AuthContext } from "../context/auth.context";
+import { useLocation } from "react-router-dom"
+import { NavHashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const {logOutUser, user} = useContext(AuthContext)
 
-
+  const endpoint = useLocation();
+  console.log(endpoint.pathname)
 
   return (
     <div>
@@ -50,49 +53,34 @@ const Navbar = () => {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="#icons"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-black opacity-75"></i>
+                <NavHashLink to={endpoint.pathname ==="/blog" ? "/#icons" : "#icons" } className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Leistungen</span>
-                </a>
+                </NavHashLink>
+
               </li>
+
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="#team"
-                >
-                  <i className="fab fa-twitter text-lg leading-lg text-black opacity-75"></i>
+              <NavHashLink to={endpoint.pathname ==="/blog" ? "/#team" : "#team" } className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Team</span>
-                </a>
+              </NavHashLink>
               </li>
+
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="#partner"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-black opacity-75"></i>
+              <NavHashLink to={endpoint.pathname ==="/blog" ? "/#partner" : "#partner" } className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Partner</span>
-                </a>
+              </NavHashLink>
               </li>
+
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="/blog"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-black opacity-75"></i>
+              <NavHashLink to="/blog" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Bloggen</span>
-                </a>
+                  </NavHashLink>
               </li>
+
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
-                  href="#contact"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-black opacity-75"></i>
+              <NavHashLink to={endpoint.pathname ==="/blog" ? "/#contact" : "#contact" } className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2 underline">Kontakt</span>
-                </a>
+              </NavHashLink>
               </li>
 
               {user &&
