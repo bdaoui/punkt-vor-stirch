@@ -7,7 +7,7 @@ const Partners = () => {
         <h1 className='text-3xl mb-4'>Gemeinsam Stark</h1>
         <p className='text-base text-gray-500'>Gemeinsam mit unseren Kooperationspartnern schaffen und gestalten wir ein neues und inklusiveres Bild der Mobilität.</p>
       </div>
-
+      
       <div className='flex flex-col md:flex-row justify-center'>
         <img className='object-scale-down h-20 my-4 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/wim_Logo.png"
         alt="logo" />
