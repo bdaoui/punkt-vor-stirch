@@ -55,7 +55,6 @@ const Contact = () => {
         contactPhone,
         contactSubject,
         contactMessage
-
     }
 
     axios.post("http://localhost:5005/contact", fileContact)
