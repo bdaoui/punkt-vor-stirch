@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
+import { AuthContext } from "../context/auth.context";
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
-  
+  const {logOutUser, user} = useContext(AuthContext)
+
+
 
   return (
     <div>
@@ -15,6 +18,9 @@ const Navbar = () => {
             >
               <img className="object-scale-down h-6 w-20" src={process.env.PUBLIC_URL + "/pvs_vlogo.png"} alt="logo"/>
             </a>
+          
+
+
             <button
               className="text-black cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
@@ -89,8 +95,20 @@ const Navbar = () => {
                 </a>
               </li>
 
+              {user &&
+
+              <li>
+              <button className=" hover:bg-red-700 bg-pink text-white text-xs md:ml-5 md:mt-1 p-1 px-2 rounded m-0" onClick={logOutUser}>Log Out</button>
+
+              </li>
+
+              }
+
+
             </ul>
+            
           </div>
+
         </div>
       </nav>
     </div>
