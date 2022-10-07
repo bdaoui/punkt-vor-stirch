@@ -8,7 +8,6 @@ const Navbar = () => {
   const {logOutUser, user} = useContext(AuthContext)
 
   const endpoint = useLocation();
-  console.log(endpoint.pathname)
 
   return (
     <div>
