@@ -1,10 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+
 import axios from "axios";
+import {AuthContext} from "../context/auth.context"
 
 const Contact = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const {isLoggedIn} = useContext(AuthContext)
 
   const handleSubmit = (e) =>{
     e.preventDefault()
@@ -64,13 +67,14 @@ const Contact = () => {
             </div>
     </div>
 
-
+    {isLoggedIn && 
     <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-md space-y-8">
   
     <form class="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div class="-space-y-px rounded-md shadow-sm">
         <div>
+        
           <label for="email" class="sr-only">email</label>
           <input id="email" name="email" type="email" autocomplete="email" required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900
            placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -103,6 +107,7 @@ const Contact = () => {
     </form>
   </div>
 </div>
+    }
 
 
 
