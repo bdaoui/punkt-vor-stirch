@@ -9,6 +9,15 @@ const Contact = () => {
   const [address, setAddress] = useState("");
   const {isLoggedIn} = useContext(AuthContext)
 
+  // states for Contact Form 
+
+  const [contactName, setContactName] = useState("")
+  const [contactLastName, setContactLastName] = useState("")
+  const [contactEmail, setContactEmail] = useState("")
+  const [contactPhone, setContactPhone] = useState("")
+  const [contactSubject, setContactSubject] = useState("")
+  const [contactMessage, setContactMessage] = useState("")
+
   const handleSubmit = (e) =>{
     e.preventDefault()
 
@@ -34,6 +43,27 @@ const Contact = () => {
         })
         .catch(err => console.log(err))
   }, [])
+
+
+  const handleContact = (e) =>{
+    e.preventDefault();
+
+    const fileContact = {
+        contactName,
+        contactLastName,
+        contactEmail,
+        contactPhone,
+        contactSubject,
+        contactMessage
+
+    }
+
+    axios.post("http://localhost:5005/contact", fileContact)
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
+
+
+  }
 
   return (
     <div className='mb-0 pb-10' id="contact">
@@ -113,42 +143,42 @@ const Contact = () => {
 
     <div className="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 my-12 bg-white border-2 border-pink rounded">
               <p className="text-3xl font-bold leading-7 text-center text-black m-5">Kontakt</p>
-            <form action="" method="post">
+            <form action="" onSubmit={handleContact}>
                 <div className="md:flex items-center mt-12  ">
                     <div className="w-full md:w-1/2 flex flex-col">
                         <label className="font-semibold leading-none text-black ">Name</label>
-                        <input type="text" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" />
+                        <input type="text" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" onChange={(e) => setContactName(e.target.value)} />
                     </div>
                     <div className="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
                         <label className="font-semibold leading-none text-black">Last Name</label>
-                        <input type="email" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink"/>
+                        <input type="text" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" onChange={(e) => setContactLastName(e.target.value)} />
                     </div>
                 </div>
                 <div className="md:flex items-center mt-4  ">
                     <div className="w-full md:w-1/2 flex flex-col">
                         <label className="font-semibold leading-none text-black ">Email</label>
-                        <input type="text" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" />
+                        <input type="email" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" onChange={(e) => setContactEmail(e.target.value)}  />
                     </div>
                     <div className="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
                         <label className="font-semibold leading-none text-black">Phone</label>
-                        <input type="email" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink"/>
+                        <input type="text" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" onChange={(e) => setContactPhone(e.target.value)} />
                     </div>
                 </div>
                 <div className="md:flex items-center mt-8">
                     <div className="w-full flex flex-col">
                         <label className="font-semibold leading-none text-black">Subject</label>
-                        <input type="text" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink"/>
+                        <input type="text" className="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" onChange={(e) => setContactSubject(e.target.value)} />
                     </div>
                     
                 </div>
                 <div>
                     <div className="w-full flex flex-col mt-8">
                         <label className="font-semibold leading-none text-black">Message</label>
-                        <textarea type="text" className="h-40 text-base leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" ></textarea>
+                        <textarea type="text" className="h-40 text-base leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" onChange={(e) => setContactMessage(e.target.value)}  ></textarea>
                     </div>
                 </div>
                 <div className="flex items-center justify-center w-full">
-                    <button className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-pink rounded hover:bg-pink focus:ring-2 focus:ring-offset-2 focus:ring-pink focus:outline-none m-5">
+                    <button type='submit' className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-pink rounded hover:bg-pink focus:ring-2 focus:ring-offset-2 focus:ring-pink focus:outline-none m-5">
                         Send message
                     </button>
                 </div>
