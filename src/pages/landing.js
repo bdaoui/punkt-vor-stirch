@@ -16,7 +16,7 @@ const Landing = () => {
       <Statistics />
       <Icons /> 
       <Team /> 
-      <div className='bg-gray-100'>
+      <div className='bg-gray-100 mt-10 mb-0 py-10'>
       <Partners />
       <Contact />
       </div>

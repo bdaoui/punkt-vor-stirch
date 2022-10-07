@@ -66,7 +66,7 @@ const Contact = () => {
   }
 
   return (
-    <div className='mb-0 pb-10' id="contact">
+    <div className='pb-10 py-20 my-20' id="contact">
         <h2 className='text-4xl md:text-5xl text-center my-10 underline decoration-pink'>Get in touch!</h2>
         
     <div className='flex flex-col md:flex-row justify-center text-center gap-20'>
@@ -142,8 +142,10 @@ const Contact = () => {
 
 
     <div className="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 my-12 bg-white border-2 border-pink rounded">
+
               <p className="text-3xl font-bold leading-7 text-center text-black m-5">Kontakt</p>
             <form action="" onSubmit={handleContact}>
+
                 <div className="md:flex items-center mt-12  ">
                     <div className="w-full md:w-1/2 flex flex-col">
                         <label className="font-semibold leading-none text-black ">Name</label>
@@ -177,8 +179,10 @@ const Contact = () => {
                         <textarea type="text" className="h-40 text-base leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white rounded border-2 border-pink" onChange={(e) => setContactMessage(e.target.value)}  ></textarea>
                     </div>
                 </div>
+
                 <div className="flex items-center justify-center w-full">
                     <button type='submit' className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-pink rounded hover:bg-pink focus:ring-2 focus:ring-offset-2 focus:ring-pink focus:outline-none m-5">
+
                         Send message
                     </button>
                 </div>

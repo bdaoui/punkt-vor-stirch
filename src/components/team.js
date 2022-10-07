@@ -11,7 +11,7 @@ const Team = () => {
   };
 
   return (
-    <div className="flex flex-col text-center h-full md:h-screen" id="team">
+    <div className="flex flex-col text-center h-full md:h-screen mb-20 pb-20" id="team">
       <h1 className="text-4xl md:text-5xl font-semibold underline decoration-pink">Hinter den Kulissen</h1>
       <p className="text-center p-10 lg:px-96">
         Wir sind ein Team aus Expertinnen mit langjähriger Erfahrung in
@@ -138,7 +138,7 @@ const Team = () => {
           <h3 className="text-pink">Co-Founder</h3>
 
           {showSocial[0] && showSocial[1] === "Nadin" && (
-            <div className="relative inset-x-3 bottom-80  flex  ">
+            <div className="relative inset-x-3 bottom-80 flex ">
               <a href="https:linkedin.com">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
