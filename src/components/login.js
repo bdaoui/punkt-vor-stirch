@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import {AuthContext} from "../context/auth.context"
 
@@ -6,7 +7,7 @@ const Login = () => {
     const [identifier, setIdentifier] = useState("")
     const [password, setPassword] = useState("")
     const { setToken, authenticateUser } = useContext(AuthContext);
-
+    const navigate = useNavigate()
     
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -18,6 +19,7 @@ const Login = () => {
                 authenticateUser()
         })
         .catch(err => console.log(err))
+
 
     }
 
@@ -34,8 +36,8 @@ const Login = () => {
     <form class="mt-8 space-y-6" action="#" method="POST">
       <div class="-space-y-px rounded-md shadow-sm">
         <div>
-          <label for="email-address" class="sr-only">Email address</label>
-          <input id="email-address" name="email" type="email" autocomplete="email" required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm" placeholder="Email address" />
+          <label for="identifier" class="sr-only">identifier</label>
+          <input id="identifier" name="text" type="text" autocomplete="email" required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm" placeholder="Identifier" />
         </div>
         <div>
           <label for="password" class="sr-only">Password</label>
