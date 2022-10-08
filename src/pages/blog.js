@@ -17,7 +17,7 @@ const Blog = () => {
   console.log(author, message, subject)
 
   //edit render
-  const [openEdit, setOpenEdit] = useState(false)
+  const [openEdit, setOpenEdit] = useState([false, ""])
 
   useEffect(() => {
     axios
@@ -65,7 +65,7 @@ const Blog = () => {
       .post(`http://localhost:5005/blog/edit`, blogPostEdit)
       .then((response) => {console.log(response)
         setRefresh(!refresh)
-        setOpenEdit(!openEdit)
+        setOpenEdit([false, ""])
       }) 
       .catch((err) => console.log(err));
   };
@@ -80,7 +80,7 @@ const Blog = () => {
   }
 
   
-
+  console.log(openEdit)
   return (
     <>
       <Navbar />
@@ -167,7 +167,7 @@ const Blog = () => {
               {isLoggedIn && 
            
               <div className="flex flex-row">
-              <svg onClick={() => setOpenEdit(!openEdit)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="hover:cursor-pointer relative w-6 h-6">
+              <svg onClick={() => setOpenEdit([!openEdit[0], blog._id])} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="hover:cursor-pointer relative w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
               </svg>
 
@@ -179,7 +179,7 @@ const Blog = () => {
       
               }
 
-                {openEdit &&
+                {openEdit[0] && openEdit[1] === blog._id && 
                 <>
                 <form onSubmit={ (e) => handleEdit(e, blog?._id)}>
                 <h1 className="text-lg py-2">Posted by:<input placeholder={blog.author} onChange={(e) => setAuthor(e.target.value)} className='text-black border-pink border-2' /></h1>
@@ -191,7 +191,7 @@ const Blog = () => {
                 </>
                 }
 
-                {!openEdit &&
+                { openEdit[1] !== blog._id  && // this to allow other post to be displayed when editing
             <>
               <img
                   src={blog.image}
