@@ -9,11 +9,12 @@ import Team from "../components/team"
 
 const Landing = () => {
   
-  
-  useEffect(() => {
-    let yOffset = window.scrollY
+  let yOffset = window.scrollY
+  console.log(yOffset)
 
-  })
+  useEffect(() => {
+
+  }, )
 
 
   return (
