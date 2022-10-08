@@ -1,13 +1,12 @@
 import React, {useContext, useState} from "react";
 import { AuthContext } from "../context/auth.context";
-import { useLocation } from "react-router-dom"
 import { NavHashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const {logOutUser, user} = useContext(AuthContext)
 
-  const endpoint = useLocation();
+
 
   return (
     <div>
@@ -52,20 +51,20 @@ const Navbar = () => {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <NavHashLink to={endpoint.pathname ==="/blog" ? "/#icons" : "#icons" } className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+                <NavHashLink to="/#icons" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Leistungen</span>
                 </NavHashLink>
 
               </li>
 
               <li className="nav-item">
-              <NavHashLink to={endpoint.pathname ==="/blog" ? "/#team" : "#team" } className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+              <NavHashLink to="/#team" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Team</span>
               </NavHashLink>
               </li>
 
               <li className="nav-item">
-              <NavHashLink to={endpoint.pathname ==="/blog" ? "/#partner" : "#partner" } className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+              <NavHashLink to="/#partner" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Partner</span>
               </NavHashLink>
               </li>
@@ -77,7 +76,7 @@ const Navbar = () => {
               </li>
 
               <li className="nav-item">
-              <NavHashLink to={endpoint.pathname ==="/blog" ? "/#contact" : "#contact" } className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+              <NavHashLink to="/#contact" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2 underline">Kontakt</span>
               </NavHashLink>
               </li>

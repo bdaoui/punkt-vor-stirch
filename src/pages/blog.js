@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 
@@ -14,7 +12,6 @@ const Blog = () => {
   const [message, setMessage] = useState("");
   const [subject, setSubject] = useState("");
 
-  console.log(author, message, subject);
 
   //edit render
   const [openEdit, setOpenEdit] = useState([false, ""]);
@@ -79,10 +76,8 @@ const Blog = () => {
       .catch((err) => console.log(err));
   };
 
-  console.log(openEdit);
   return (
     <>
-      <Navbar />
 
       <div className="flex flex-col justify-center bg-zinc-50 h-100vh">
         <h1 className="py-10 text-2xl">Welcome to our blog page</h1>
@@ -349,7 +344,6 @@ const Blog = () => {
             provident ut recusandae dolorem ut expedita
           </p>
         </div>
-        <Footer />
       </div>
     </>
   );
