@@ -48,13 +48,13 @@ const Blog = () => {
   const handleEdit = (e, id) => {
     e.preventDefault()
     
-    console.log( id)
+    // Send info to Edit, if field is empty do not send it
 
     const blogPostEdit = new FormData();
       blogPostEdit.append("image", e.target.image.files[0])
-      blogPostEdit.append("author", author)
-      blogPostEdit.append("message", message)
-      blogPostEdit.append("subject", subject)
+      (author ? blogPostEdit.append("author", author) : null)
+      (message ? blogPostEdit.append("message", message) : null)
+      (subject ? blogPostEdit.append("subject", subject) : null)
       blogPostEdit.append("id", id)
 
     axios
