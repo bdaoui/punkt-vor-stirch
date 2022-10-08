@@ -18,7 +18,9 @@ const Login = () => {
                 setToken(response.data.authToken);
                 authenticateUser()
              })
-             .then(response => navigate("/"))
+             .then(response => {
+              console.log(response)
+              navigate("/admin/dashboard")})
              .catch(err => console.log(err))
 
     }

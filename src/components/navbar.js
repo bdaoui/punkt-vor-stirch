@@ -83,12 +83,17 @@ const Navbar = () => {
               </li>
 
               {user &&
+              <> 
+              <li>
+              <NavHashLink to="/admin/dashboard" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+                  <span className="ml-2">Dashboard</span>
+              </NavHashLink>
+              </li>
 
               <li>
               <button className=" hover:bg-red-700 bg-pink text-white text-xs md:ml-5 md:mt-1 p-1 px-2 rounded m-0" onClick={logOutUser}>Log Out</button>
-
               </li>
-
+              </>
               }
 
 

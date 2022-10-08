@@ -5,6 +5,7 @@ import Impressum from './pages/impressum';
 import Landing from './pages/landing';
 import Blog from './pages/blog'
 import Login from './components/login';
+import Dashboard from './pages/dashboard';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/impressum' element={<Impressum />} />
         <Route path='/blog' element={<Blog />} />
         <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
     </Routes>
     </div>
   );
