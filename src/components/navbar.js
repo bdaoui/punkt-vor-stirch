@@ -1,4 +1,5 @@
 import React, {useContext, useState} from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { NavHashLink } from 'react-router-hash-link';
 
@@ -35,9 +36,9 @@ const Navbar = () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </svg>
             </button>
@@ -51,32 +52,32 @@ const Navbar = () => {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <NavHashLink to="/#icons" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+                <NavHashLink smooth to="/#icons" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Leistungen</span>
                 </NavHashLink>
 
               </li>
 
               <li className="nav-item">
-              <NavHashLink to="/#team" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+              <NavHashLink smooth to="/#team" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Team</span>
               </NavHashLink>
               </li>
 
               <li className="nav-item">
-              <NavHashLink to="/#partner" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+              <NavHashLink smooth to="/#partner" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Partner</span>
               </NavHashLink>
               </li>
 
               <li className="nav-item">
-              <NavHashLink to="/blog" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+              <Link  to="/blog" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Bloggen</span>
-                  </NavHashLink>
+              </Link>
               </li>
 
               <li className="nav-item">
-              <NavHashLink to="/#contact" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+              <NavHashLink smooth to="/#contact" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2 underline">Kontakt</span>
               </NavHashLink>
               </li>
@@ -84,9 +85,9 @@ const Navbar = () => {
               {user &&
               <> 
               <li>
-              <NavHashLink to="/admin/dashboard" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
+              <Link  to="/admin/dashboard" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" >
                   <span className="ml-2">Dashboard</span>
-              </NavHashLink>
+              </Link>
               </li>
 
               <li>
