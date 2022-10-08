@@ -43,6 +43,7 @@ const Contact = () => {
         setEmail(email);
       })
       .catch((err) => console.log(err));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleContact = (e) => {
@@ -223,7 +224,7 @@ const Contact = () => {
           Kontakt
         </p>
         <form action="" onSubmit={handleContact}>
-          <div className="md:flex items-center mt-12  ">
+          <div className="md:flex items-center mt-12 ">
             <div className="w-full md:w-1/2 flex flex-col">
               <label className="font-semibold leading-none text-black ">
                 Name

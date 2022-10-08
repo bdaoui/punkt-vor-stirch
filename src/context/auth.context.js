@@ -3,64 +3,64 @@ import { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 const AuthContext = createContext();
 
 const Auth = (props) => {
-    
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
-    
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
 
-    const setToken = (token) => {
-        localStorage.setItem('authToken', token);
+  const setToken = (token) => {
+    localStorage.setItem("authToken", token);
+  };
+
+  const authenticateUser = async () => {
+    const storeToken = localStorage.getItem("authToken");
+
+    if (storeToken) {
+      axios
+        .get(`${API_URL}/admin/verify`, {
+          headers: { Authorization: `Bearer ${storeToken}` },
+        })
+        .then((response) => {
+          const user = response.data;
+          setIsLoggedIn(true);
+          setUser(user);
+        })
+        .catch((error) => {
+          setIsLoggedIn(false);
+          setUser(null);
+        });
+    } else {
+      setIsLoggedIn(false);
+      setUser(null);
     }
+  };
 
-    const authenticateUser = async () =>{
-        const storeToken = localStorage.getItem('authToken');
+  const removeToken = () => {
+    localStorage.removeItem("authToken");
+  };
 
-        if(storeToken) {
-            axios.get(`${API_URL}/admin/verify`, {headers: {Authorization: `Bearer ${storeToken}`}})
-            .then((response) => {
-                const user = response.data;
-                setIsLoggedIn(true);
-                setUser(user);
-            })
-            .catch((error) => {
-                setIsLoggedIn(false);
-                setUser(null);
-            });
-        } else {
-            setIsLoggedIn(false);
-            setUser(null);
-        }
-    };
+  const logOutUser = () => {
+    removeToken();
+    authenticateUser();
+    navigate("/");
+  };
 
-    const removeToken = () => {
-        localStorage.removeItem("authToken");
-    };
+  useEffect(() => {
+    authenticateUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const logOutUser = () => {
-        removeToken();
-        authenticateUser();
-        navigate("/")
+  return (
+    <AuthContext.Provider
+      value={{ setToken, authenticateUser, logOutUser, isLoggedIn, user }}
+    >
+      {props.children}
+    </AuthContext.Provider>
+  );
+};
 
-    };
-      
-      useEffect(() => { 
-        authenticateUser();
-      },[]);
-
-    return (
-        <AuthContext.Provider value={{setToken, authenticateUser, logOutUser, isLoggedIn, user}}>
-
-            {props.children}
-        </AuthContext.Provider>
-
-    )
-
-}
-
-export { Auth, AuthContext};
+export { Auth, AuthContext };
