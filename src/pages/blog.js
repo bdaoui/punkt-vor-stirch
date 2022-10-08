@@ -14,6 +14,7 @@ const Blog = () => {
   const [message, setMessage] = useState("");
   const [subject, setSubject] = useState("");
 
+  console.log(author, message, subject)
 
   //edit render
   const [openEdit, setOpenEdit] = useState(false)
@@ -32,7 +33,7 @@ const Blog = () => {
 
     const uploadImage = new FormData();
       uploadImage.append("image", e.target.image.files[0])
-      uploadImage.append("author", author)
+      uploadImage.append("author", author )
       uploadImage.append("message", message)
       uploadImage.append("subject", subject)
 
@@ -50,12 +51,15 @@ const Blog = () => {
     
     // Send info to Edit, if field is empty do not send it
 
+  
+
     const blogPostEdit = new FormData();
       blogPostEdit.append("image", e.target.image.files[0])
-      (author ? blogPostEdit.append("author", author) : null)
-      (message ? blogPostEdit.append("message", message) : null)
-      (subject ? blogPostEdit.append("subject", subject) : null)
       blogPostEdit.append("id", id)
+      blogPostEdit.append("author", author)
+      blogPostEdit.append("message", message)
+      blogPostEdit.append("subject", subject)
+
 
     axios
       .post(`http://localhost:5005/blog/edit`, blogPostEdit)
