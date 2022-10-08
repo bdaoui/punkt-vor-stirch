@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Partners = () => {
+  
   return (
     <div className= "my-10 py-10 mx-4" id="partner">
       <div className='text-center mb-10'>
