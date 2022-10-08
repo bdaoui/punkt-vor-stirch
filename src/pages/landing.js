@@ -1,9 +1,7 @@
 import React from 'react'
 import Contact from '../components/contact';
-import Footer from '../components/footer';
 import Icons from '../components/icons';
 import Intro from '../components/intro';
-import Navbar from '../components/navbar';
 import Partners from '../components/partners';
 import Statistics from '../components/statistics';
 import Team from "../components/team"
@@ -11,7 +9,6 @@ import Team from "../components/team"
 const Landing = () => {
   return (
     <div className='bg-zinc-50 h-100vh'>
-      <Navbar />
       <Intro />
       <Statistics />
       <Icons /> 
@@ -20,7 +17,6 @@ const Landing = () => {
       <Partners />
       <Contact />
       </div>
-      < Footer />
     </div>
   )
 }
