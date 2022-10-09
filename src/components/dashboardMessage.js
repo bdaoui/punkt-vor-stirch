@@ -1,25 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const DashboardMessage = ({ data }) => {
   const [toggle, setToggle] = useState([false, ""]);
   const [chosenMessage, setChosenMessage] = useState({});
 
   // select Message and Set Toggler
-
-  const filteredMessage =  data.filter(async (message) => { console.log(message._id, toggle[1]); return message._id === toggle[1] });
   
   const handleShowMessage = async (e, id) => {
-      
-      await setChosenMessage(filteredMessage[0]);  
-      await setToggle([!toggle[0], id]);
-
-    // console.log(toggle);
-    console.log(filteredMessage[0]);
-    // console.log(data)
+    await setToggle([!toggle[0], id]);
+    setChosenMessage( data.find(message => message._id === id) )
+      // console.log(toggle);
+      console.log(chosenMessage)
   };
 
   return (
-    <div className="flex flex-col gap-5 md:gap-0 md:flex-row  p-4  max-h-[64vh]">
+    <div className="flex flex-col gap-5 md:gap-0 md:flex-row  p-4  h-screen">
 
       <div className="md:w-1/3 overflow-y-scroll ">
         <h1 className="text-4xl p-4">Messages</h1>
@@ -50,7 +45,7 @@ const DashboardMessage = ({ data }) => {
       </div>
 
         {toggle[0] && (
-          <div className="border-4 border-color-white md:w-2/3 flex flex-col justify-center align-center">
+          <div className="border-4 border-color-white md:w-2/3 flex flex-col justify-center align-center overflow-y-scroll">
             <h1>
               {chosenMessage?.name} {chosenMessage?.surname}
             </h1>

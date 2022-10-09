@@ -160,15 +160,15 @@ const Dashboard = () => {
       </ul>
 
       <div className="h-full bg-pink/75" id="1">
-        <p className={openTab == 1 ? "block" : "hidden"}> {
+        <section className={openTab == 1 ? "block" : "hidden"}> {
 
           <DashboardMessage data={unread} />
 
-        } </p>
-        <p className={openTab == 2 ? "block" : "hidden"}> <DashboardMessage data={read} /></p>
-        <p className={openTab == 3 ? "block" : "hidden"}><DashboardMessage data={resolved} /></p>
-        <p className={openTab == 4 ? "block" : "hidden"}><DashboardMessage data={unresolved} /></p>
-        <p className={openTab == 5 ? "block" : "hidden"}><DashboardMessage data={important} /> </p>
+        } </section>
+        <section className={openTab == 2 ? "block" : "hidden"}> <DashboardMessage data={read} /></section>
+        <section className={openTab == 3 ? "block" : "hidden"}><DashboardMessage data={resolved} /></section>
+        <section className={openTab == 4 ? "block" : "hidden"}><DashboardMessage data={unresolved} /></section>
+        <section className={openTab == 5 ? "block" : "hidden"}><DashboardMessage data={important} /> </section>
       </div>
     </div>
   );
