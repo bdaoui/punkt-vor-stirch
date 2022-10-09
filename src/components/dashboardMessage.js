@@ -7,7 +7,7 @@ const DashboardMessage = (data) => {
                 <h1>Messages</h1>
                 <ul>
                 {data.map( message => {     
-                    return <li>
+                    return <li >
                         <h3>{message.subject}</h3>
                         <h4>{message.email}</h4>
                     </li>
