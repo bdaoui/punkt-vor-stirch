@@ -6,17 +6,16 @@ const DashboardMessage = ({ data }) => {
 
   // select Message and Set Toggler
 
-  const filteredMessage =  data.filter(async (message) => message._id === toggle[1]);
+  const filteredMessage =  data.filter(async (message) => { console.log(message._id, toggle[1]); return message._id === toggle[1] });
   
   const handleShowMessage = async (e, id) => {
       
       await setChosenMessage(filteredMessage[0]);  
       await setToggle([!toggle[0], id]);
 
-    console.log("Is this Firing up?");
-    console.log(toggle);
+    // console.log(toggle);
     console.log(filteredMessage[0]);
-    console.log(data)
+    // console.log(data)
   };
 
   return (
