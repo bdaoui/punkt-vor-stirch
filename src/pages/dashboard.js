@@ -159,7 +159,7 @@ const Dashboard = () => {
         </li>
       </ul>
 
-      <div className="h-screen bg-pink/75" id="1">
+      <div className="h-full bg-pink/75" id="1">
         <p className={openTab == 1 ? "block" : "hidden"}> {
 
           <DashboardMessage data={unread} />
