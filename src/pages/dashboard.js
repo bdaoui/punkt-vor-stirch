@@ -1,88 +1,170 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Dashboard = () => {
+  const [openTab, setOpenTab] = useState(1);
 
-  const [openTab, setOpenTab] = useState(1)
+  // States for tabs
 
+  const [unread, setUnread] = useState([]);
+  const [read, setRead] = useState([]);
+  const [resolved, setResolved] = useState([]);
+  const [unresolved, setUnresolved] = useState([]);
+  const [important, setImportant] = useState([]);
+
+
+  // Axios request to get all messages and filter them by status
+
+  useEffect(
+    ()=> {
+      axios.get("http://localhost:5005/dashboard").then((response) => {
+        response.data.forEach((message) => {
+
+
+          switch (message.status) {
+            case "unread":
+              setUnread(prev => [...prev, message]);
+              break;
+            case "read":
+              setRead(prev => [...prev, message]);
+              break;
+            case "resolved":
+              setResolved(prev => [...prev, message]);
+              break;
+            case "unresolved":
+              setUnresolved(prev => [...prev, message]);
+              break;
+            case "important":
+              setImportant(prev => [...prev, message]);
+              break;
+            default:
+              setUnread(prev => [...prev, message]);
+          }
+
+        });
+      });
+
+
+    }, []
+  )
+
+
+  // Options available in model
 
   const options = [
-    {value: 1, text: "Unread"},
-    {value: 2, text: "Read"},
-    {value: 3, text: "Resolved"},
-    {value: 4, text: "Unresolved"},
-    {value: 5, text: "Important"}
-  ]
+    { value: 1, text: "Unread" },
+    { value: 2, text: "Read" },
+    { value: 3, text: "Resolved" },
+    { value: 4, text: "Unresolved" },
+    { value: 5, text: "Important" },
+  ];
 
+  const [selected, setSelected] = useState(options[0].value);
 
-  const [selected, setSelected] = useState(options[0].value)
-  
+  useEffect(() => {
+    console.log(selected);
+    setOpenTab(selected);
+  }, [selected]);
 
-useEffect( () =>{
-  console.log( selected)
-  setOpenTab(selected)
-}, [selected])
-
-
-  const handleChange =  async (e) => {
+  const handleChange = async (e) => {
     setSelected(e.target.value);
+  };
 
-  }
 
 
- 
- return (
+  return (
     <div>
-
-      <h1 className='w-full text-5xl underline decoration-pink my-10 py-10'>Welcome to the dashboard</h1>
-      <div class="sm:hidden">
-        <select id="tabs" class="bg-pink border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-pink/75 focus:border-pink/50 block w-full p-2.5"  onChange={handleChange} value={selected} >
-            {/* <option value="1">Unread</option>
-            <option value="2">Read</option>
-            <option value="3">Resolved</option>
-            <option value="4">Unresolved</option>
-            <option value="5">Important</option> */}
-            {options.map(option => (
-              <option key={option.value} value={option.value} >
-                {option.text}
-              </option>
-            ))}
+      <h1 className="w-full text-5xl underline decoration-pink mt-10 py-10">
+        Welcome to the dashboard
+      </h1>
+      <div className="sm:hidden">
+        <select
+          id="tabs"
+          className="bg-pink border border-gray-300 text-white sm:text-sm focus:ring-pink/75 focus:border-pink/50 block w-full p-2.5 my-3 "
+          onChange={handleChange}
+          value={selected}
+        >
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.text}
+            </option>
+          ))}
         </select>
+      </div>
+
+      <ul className="hidden text-sm font-medium text-center text-white rounded-lg divide-x divide-gray-200 shadow sm:flex ">
+        <li className="w-full">
+          <button
+            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded "
+            aria-current="page"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpenTab(1);
+            }}
+          >
+            Unread
+          </button>
+        </li>
+
+        <li className="w-full">
+          <button
+            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded"
+            aria-current="page"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpenTab(2);
+            }}
+          >
+            Read
+          </button>
+        </li>
+        <li className="w-full">
+          <button
+            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded"
+            aria-current="page"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpenTab(3);
+            }}
+          >
+            Resolved
+          </button>
+        </li>
+        <li className="w-full">
+          <button
+            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded"
+            aria-current="page"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpenTab(4);
+            }}
+          >
+            Unresolved
+          </button>
+        </li>
+        <li className="w-full">
+          <button
+            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded"
+            aria-current="page"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpenTab(5);
+            }}
+          >
+            Important
+          </button>
+        </li>
+      </ul>
+
+      <div className="h-screen bg-pink/75" id="1">
+        <p className={openTab == 1 ? "block" : "hidden"}> Unread </p>
+        <p className={openTab == 2 ? "block" : "hidden"}>Read </p>
+        <p className={openTab == 3 ? "block" : "hidden"}>Resolved</p>
+        <p className={openTab == 4 ? "block" : "hidden"}>Unresolved</p>
+        <p className={openTab == 5 ? "block" : "hidden"}>Important </p>
+      </div>
     </div>
+  );
+};
 
-<ul class="hidden text-sm font-medium text-center text-white rounded-lg divide-x divide-gray-200 shadow sm:flex ">
-    
-    <li class="w-full">
-        <button class="inline-block p-4 my-1 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded  " aria-current="page"    onClick={e => {e.preventDefault();  setOpenTab(1); }}>Unread</button>
-    </li>
-
-    <li class="w-full">
-    <button class="inline-block p-4 my-1 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded" aria-current="page"    onClick={e => {e.preventDefault();  setOpenTab(2); }}>Read</button>
-    </li>
-    <li class="w-full">
-    <button class="inline-block p-4 my-1 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded" aria-current="page"    onClick={e => {e.preventDefault();  setOpenTab(3); }}>Resolved</button>
-    </li>
-    <li class="w-full">
-    <button class="inline-block p-4 my-1 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded" aria-current="page"    onClick={e => {e.preventDefault();  setOpenTab(4); }}>Unresolved</button>
-    </li>
-    <li class="w-full">
-    <button class="inline-block p-4 my-1 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded" aria-current="page"    onClick={e => {e.preventDefault();  setOpenTab(5); }}>Important</button>
-    </li>
-</ul>
-
-    
-    <div className='h-screen bg-pink/75' id="1" >
-      <p className={openTab == 1? "block" : "hidden"} > Hellow is this working?  </p>
-      <p className={openTab == 2? "block" : "hidden"}>Hello World  1</p>
-      <p className={openTab == 3? "block" : "hidden"}>Hello World  2</p>
-      <p className={openTab == 4? "block" : "hidden"} >Hello World  3</p>
-      <p className={openTab == 5? "block" : "hidden"}>Hello World  4</p>
-  
-    </div>
-    
-     
-    </div>
-  
-  )
-}
-
-export default Dashboard
+export default Dashboard;
