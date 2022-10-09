@@ -1,56 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import DashboardMessage from "../components/dashboardMessage";
 
 const Dashboard = () => {
-  const [openTab, setOpenTab] = useState(1);
-
-  // States for tabs
-
-  const [unread, setUnread] = useState([]);
-  const [read, setRead] = useState([]);
-  const [resolved, setResolved] = useState([]);
-  const [unresolved, setUnresolved] = useState([]);
-  const [important, setImportant] = useState([]);
-
-
-  // Axios request to get all messages and filter them by status
-
-  useEffect(
-    ()=> {
-      axios.get("http://localhost:5005/dashboard").then((response) => {
-        response.data.forEach((message) => {
-
-
-          switch (message.status) {
-            case "unread":
-              setUnread(prev => [...prev, message]);
-              break;
-            case "read":
-              setRead(prev => [...prev, message]);
-              break;
-            case "resolved":
-              setResolved(prev => [...prev, message]);
-              break;
-            case "unresolved":
-              setUnresolved(prev => [...prev, message]);
-              break;
-            case "important":
-              setImportant(prev => [...prev, message]);
-              break;
-            default:
-              setUnread(prev => [...prev, message]);
-          }
-
-        });
-      });
-
-
-    }, []
-  )
-
 
   // Options available in model
-
+  
   const options = [
     { value: 1, text: "Unread" },
     { value: 2, text: "Read" },
@@ -59,20 +14,69 @@ const Dashboard = () => {
     { value: 5, text: "Important" },
   ];
 
+
+  const [openTab, setOpenTab] = useState(1);
   const [selected, setSelected] = useState(options[0].value);
-
-  useEffect(() => {
-    console.log(selected);
-    setOpenTab(selected);
-  }, [selected]);
-
-  const handleChange = async (e) => {
-    setSelected(e.target.value);
-  };
-
-
-
-  return (
+  
+  // States for tabs
+  
+  const [unread, setUnread] = useState([]);
+  const [read, setRead] = useState([]);
+  const [resolved, setResolved] = useState([]);
+  const [unresolved, setUnresolved] = useState([]);
+  const [important, setImportant] = useState([]);
+  
+  
+  // Axios request to get all messages and filter them by status
+  
+  useEffect(
+    ()=> {
+      axios.get("http://localhost:5005/dashboard").then((response) => {
+        response.data.forEach((message) => {
+          
+          
+          switch (message.status) {
+            case "unread":
+              setUnread(prev => [...prev, message]);
+              break;
+              case "read":
+                setRead(prev => [...prev, message]);
+                break;
+                case "resolved":
+                  setResolved(prev => [...prev, message]);
+                  break;
+                  case "unresolved":
+                    setUnresolved(prev => [...prev, message]);
+                    break;
+                    case "important":
+                      setImportant(prev => [...prev, message]);
+                      break;
+                      default:
+                        setUnread(prev => [...prev, message]);
+                      }
+                      
+                    });
+                  });
+                  
+                  
+                }, []
+                )
+                
+                
+                
+                
+                useEffect(() => {
+                  console.log(selected);
+                  setOpenTab(selected);
+                }, [selected]);
+                
+                const handleChange = async (e) => {
+                  setSelected(e.target.value);
+                };
+                
+                
+                
+                return (
     <div>
       <h1 className="w-full text-5xl underline decoration-pink mt-10 py-10">
         Welcome to the dashboard
@@ -157,11 +161,15 @@ const Dashboard = () => {
       </ul>
 
       <div className="h-screen bg-pink/75" id="1">
-        <p className={openTab == 1 ? "block" : "hidden"}> Unread </p>
-        <p className={openTab == 2 ? "block" : "hidden"}>Read </p>
-        <p className={openTab == 3 ? "block" : "hidden"}>Resolved</p>
-        <p className={openTab == 4 ? "block" : "hidden"}>Unresolved</p>
-        <p className={openTab == 5 ? "block" : "hidden"}>Important </p>
+        <p className={openTab == 1 ? "block" : "hidden"}> {
+
+          <DashboardMessage data={unread} />
+
+        } </p>
+        <p className={openTab == 2 ? "block" : "hidden"}> <DashboardMessage data={read} /></p>
+        <p className={openTab == 3 ? "block" : "hidden"}><DashboardMessage data={resolved} /></p>
+        <p className={openTab == 4 ? "block" : "hidden"}><DashboardMessage data={unresolved} /></p>
+        <p className={openTab == 5 ? "block" : "hidden"}><DashboardMessage data={important} /> </p>
       </div>
     </div>
   );
