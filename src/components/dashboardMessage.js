@@ -20,9 +20,9 @@ const DashboardMessage = ({ data }) => {
   };
 
   return (
-    <div className="flex flex-col gap-5 md:gap-0 md:flex-row  p-4 border-4 border-black max-h-[80vh]">
+    <div className="flex flex-col gap-5 md:gap-0 md:flex-row  p-4  max-h-[64vh]">
 
-      <div className="border-4 border-black border-solid md:w-1/3 overflow-y-scroll ">
+      <div className="md:w-1/3 overflow-y-scroll ">
         <h1 className="text-4xl p-4">Messages</h1>
         <ul>
           {data.map((message) => {
@@ -31,9 +31,18 @@ const DashboardMessage = ({ data }) => {
                 key={message._id}
                 onClick={(e) => handleShowMessage(e, message._id)}
               >
-                <div className="flex flex-col md:flex-row gap-2 md:gap-5 p-2 justify-center align-center text-lg border border-black">
-                    <h4><span className="underline font-medium">From:</span> {message.email}</h4>
-                    <h3><span className="underline font-medium">Subject:</span> {message.subject}</h3>
+                <div className="flex flex-col p-2 justify-between align-center text-md border-b-2 border-black">
+                    
+                    <div className="flex flex-col md:flex-row  md:gap-5 p-2 justify-between align-center text-md">
+                        <h4><span className="underline font-medium">From:</span> </h4>
+                        <h3><span className="underline font-medium">Subject:</span></h3>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row  md:gap-5 p-2 justify-between align-center text-md ">
+                        <h4> {message.email}</h4>
+                        <h3> {message.subject}</h3>
+
+                    </div>
                 </div>
               </li>
             );
