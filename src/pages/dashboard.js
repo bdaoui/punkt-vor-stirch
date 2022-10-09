@@ -66,7 +66,6 @@ const Dashboard = () => {
                 
                 
                 useEffect(() => {
-                  console.log(selected);
                   setOpenTab(selected);
                 }, [selected]);
                 
