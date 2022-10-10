@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef} from "react";
 import axios from 'axios';
 
-const DashboardMessage = ({ data}) => {
+const DashboardMessage = ({ data, refresh, setRefresh}) => {
   const [toggle, setToggle] = useState([false, ""]);
   const [chosenMessage, setChosenMessage] = useState({});
-
   const [targetValueEdit, setTargetValueEdit] = useState("")
 
   const isMounted = useRef(false);
@@ -16,13 +15,14 @@ const DashboardMessage = ({ data}) => {
   };
 
   const toggleFalse = () => {
-    setToggle([false, ""])
+			setRefresh(!refresh)
   }
 
 
   
   const handleEdit =  (e) =>  {
     setTargetValueEdit(e.target.value);
+				setRefresh(!refresh)
  
   }
 
@@ -31,7 +31,7 @@ useEffect(() => {
   if (isMounted.current){ 
     const id = chosenMessage._id
     axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
-              .then(response => console.log(response))
+              .then(response => setToggle([false, ""]))
               .catch(err => console.log(err))
   } else {
     isMounted.current = true;

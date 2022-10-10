@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   const [openTab, setOpenTab] = useState(1);
   const [selected, setSelected] = useState(options[0].value);
-
+  const [refresh, setRefresh] = useState(false)
 
   // States for tabs
 
@@ -32,7 +32,8 @@ const Dashboard = () => {
       response.data.forEach((message) => {
         switch (message.status) {
           case "unread":
-            setUnread((prev) => [...prev, message]);
+
+            setUnread((prev) => prev.includes(message._id) ? prev : [...prev, message] );
             break;
           case "read":
             setRead((prev) => [...prev, message]);
@@ -52,7 +53,7 @@ const Dashboard = () => {
       });
     });
     
-  }, []);
+  }, [refresh]);
 
   useEffect(() => {
     setOpenTab(selected);
@@ -148,19 +149,19 @@ const Dashboard = () => {
 
       <div className="h-full bg-pink/75" id="1">
         <section className={openTab === 1 ? "block" : "hidden"}>
-          <DashboardMessage data={unread} />
+          <DashboardMessage data={unread} refresh={refresh} setRefresh={setRefresh} />
         </section>
         <section className={openTab === 2 ? "block" : "hidden"}>
-          <DashboardMessage data={read} />
+          <DashboardMessage data={read} refresh={refresh} setRefresh={setRefresh} />
         </section>
         <section className={openTab === 3 ? "block" : "hidden"}>
-          <DashboardMessage data={resolved} />
+          <DashboardMessage data={resolved} refresh={refresh} setRefresh={setRefresh} />
         </section>
         <section className={openTab === 4 ? "block" : "hidden"}>
-          <DashboardMessage data={unresolved} />
+          <DashboardMessage data={unresolved} refresh={refresh} setRefresh={setRefresh} />
         </section>
         <section className={openTab === 5 ? "block" : "hidden"}>
-          <DashboardMessage data={important} />
+          <DashboardMessage data={important} refresh={refresh} setRefresh={setRefresh} />
         </section>
       </div>
     </div>
