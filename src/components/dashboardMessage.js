@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import axios from 'axios';
 
 const DashboardMessage = ({ data }) => {
@@ -6,7 +6,7 @@ const DashboardMessage = ({ data }) => {
   const [chosenMessage, setChosenMessage] = useState({});
 
   const [targetValueEdit, setTargetValueEdit] = useState("")
-  
+  const [simple, setSimple] = useState(false)
 
   // select Message and Set Toggler
   const handleShowMessage = async (e, id) => {
@@ -19,16 +19,24 @@ const DashboardMessage = ({ data }) => {
   }
 
 
-const handleEdit =  (e) =>  {
-   setTargetValueEdit(e.target.value)
-}
+  
+  const handleEdit =  (e) =>  {
+    setTargetValueEdit(e.target.value);
+				setSimple(!simple)
+ 
+  }
 
-useEffect(() => {
-  const id = chosenMessage._id
-  axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
-            .then(response => console.log(response))
-            .catch(err => console.log(err))
-}, [targetValueEdit])
+
+  
+  useMemo(() => {
+			console.log("I am Running")
+
+			const id = chosenMessage._id
+			axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
+			.then(response => console.log(response))
+			.catch(err => console.log(err)) 
+
+}, [simple])
 
 
   return (
