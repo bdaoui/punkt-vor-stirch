@@ -12,7 +12,6 @@ const Blog = () => {
   const [message, setMessage] = useState("");
   const [subject, setSubject] = useState("");
 
-
   //edit render
   const [openEdit, setOpenEdit] = useState([false, ""]);
 
@@ -76,20 +75,21 @@ const Blog = () => {
       .catch((err) => console.log(err));
   };
 
+  console.log(openEdit);
+
   return (
     <>
-
       <div className="flex flex-col justify-center bg-zinc-50 h-100vh">
         <h1 className="py-10 text-2xl">Welcome to our blog page</h1>
 
         {isLoggedIn && (
-          <div className="w-100wv mx-20 px-6 lg:px-8 my-12 bg-white border-2 border-pink rounded">
+          <div className="w-100wv mx-20 px-6 lg:px-8 my-12 bg-white border-8 border-pink rounded">
             <p className="text-3xl font-bold leading-7 text-center text-black m-5">
               Blog
             </p>
             <form action="" onSubmit={handleSubmitPost}>
               <div className="md:flex flex-col md:flex-row justify-center items-center mt-12  ">
-                <div className="w-full md:w-1/2 flex flex-col">
+                <div className="w-full md:w-2/4 flex flex-col">
                   <label className="font-semibold leading-none text-black ">
                     Subject
                   </label>
@@ -100,7 +100,7 @@ const Blog = () => {
                   />
                 </div>
 
-                <div className="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+                <div className="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                   <label className="font-semibold leading-none text-black">
                     Author
                   </label>
@@ -111,7 +111,7 @@ const Blog = () => {
                   />
                 </div>
 
-                <div className="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+                <div className="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                   <label className="font-semibold leading-none text-black">
                     Image
                   </label>
@@ -151,10 +151,10 @@ const Blog = () => {
           return (
             <div
               key={blog._id}
-              className="border-pink border-4 md:mx-20 md:p-20 mx-5 p-5 justify-center text-left my-4 "
+              className="border-b-pink border-4 mx-5 md:mx-28 xl:mx-80  p-5 justify-center text-left my-4 "
             >
               {isLoggedIn && (
-                <div className="flex flex-row">
+                <div className="flex flex-row relative p-2 mb-5">
                   <svg
                     onClick={() => setOpenEdit([!openEdit[0], blog._id])}
                     xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +162,7 @@ const Blog = () => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="hover:cursor-pointer relative w-6 h-6"
+                    className="hover:cursor-pointer absolute top-0 right-0 w-6 h-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -178,7 +178,7 @@ const Blog = () => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="mx-10 hover:cursor-pointer relative w-6 h-6"
+                    className="mx-10 hover:cursor-pointer absolute top-0 right-0 w-6 h-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -225,7 +225,7 @@ const Blog = () => {
                     </p>
                     <button
                       type="submit"
-                      className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-pink rounded hover:bg-pink focus:ring-2 focus:ring-offset-2 focus:ring-pink focus:outline-none"
+                      className="my-9 font-semibold leading-none text-white py-4 px-10 bg-pink rounded hover:bg-pink focus:ring-2 focus:ring-offset-2 focus:ring-pink focus:outline-none"
                     >
                       Edit Blog Post
                     </button>
@@ -233,117 +233,58 @@ const Blog = () => {
                 </>
               )}
 
-              {openEdit[1] !== blog._id && ( // this to allow other post to be displayed when editing
-                <>
-                  <img
-                    src={blog.image}
-                    alt={blog.name}
-                    className="md:float-left object-scale-down w-2/4 m-4"
-                  />
-                  <h1 className="text-lg py-2">Posted by: {blog.author}</h1>
-                  <h2 className="text-base py-2">Subject: {blog.subject}</h2>
-                  <p className="text-xs leading-5">{blog.message}</p>
-                </>
-              )}
+              {
+                // this to allow other post to be displayed when editing
+
+                <div>
+                  <div className="dark:bg-white dark:text-gray-50">
+                    <div className="container grid grid-cols-12 mx-auto dark:bg-pink">
+                      <div
+                        className="bg-no-repeat bg-cover dark:bg-gray-700 col-span-full lg:col-span-4"
+                        style={{
+                          backgroundImage: `url(${blog.image})`,
+                          backgroundPosition: "center center",
+                          backgroundBlendMode: "multiply",
+                          backgroundSize: "cover",
+                        }}
+                      >
+                        {" "}
+                      </div>
+                      <div className="flex flex-col p-6 col-span-full row-span-full lg:col-span-8 lg:p-10">
+                        <h1 className="text-3xl font-semibold">
+                          {blog.subject}
+                        </h1>
+                        <p className="flex-1 pt-2">{blog.message}</p>
+                        <div className="flex items-center justify-between pt-2">
+                          <div className="flex space-x-2">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              className="w-5 h-5 dark:text-gray-400"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                                clipRule="evenodd"
+                              ></path>
+                            </svg>
+                            <span className="self-center text-sm">
+                              by {blog.author}
+                            </span>
+                          </div>
+                          <span className="text-xs">3 min read</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
             </div>
           );
         })}
 
-        <div className="border-pink border-4 md:mx-20 md:p-20 mx-5 p-5 justify-center text-left my-4">
-          <img
-            src="https://images.unsplash.com/photo-1465447142348-e9952c393450?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-            alt="logo"
-            className="md:float-left object-scale-down w-2/4 m-4"
-          />
-
-          <h1 className="text-lg py-2">Posted by: Jane Doe</h1>
-          <h2 className="text-base py-2">
-            Subject: Eum reprehenderit internos vel deserunt galisum est ratione
-            blanditiis{" "}
-          </h2>
-          <p className="text-xs leading-5">
-            Lorem ipsum dolor sit amet. Qui natus ipsam ex quam aspernatur qui
-            incidunt quasi ut ratione voluptatem? Est velit cupiditate aut ipsam
-            tempore qui architecto commodi. Eum reprehenderit internos vel
-            deserunt galisum est ratione blanditiis. Qui animi suscipit cum
-            atque rerum sit Quis sunt et harum impedit non omnis consequatur!
-            Aut dolor neque eos sapiente consequuntur et facilis veritatis hic
-            quos aliquam qui ipsum architecto nam harum laudantium 33 quae
-            dolore. Ex quaerat eaque At delectus recusandae non voluptatem
-            minus. A corporis internos est maxime quia aut molestiae dolorem aut
-            inventore quaerat! Et ducimus maiores et asperiores nihil in optio
-            voluptatem ea error rerum. Vel molestias ducimus ut quos similique
-            aut rerum deleniti. Eum maxime quia et ipsam soluta 33 praesentium
-            voluptates. Est consequatur ducimus rem inventore beatae et tempora
-            dolorem! Aut doloremque quis rem saepe illo est rerum voluptatem et
-            laboriosam quaerat. Rem pariatur odio et quia molestiae qui quaerat
-            libero qui assumenda delectus et dignissimos cupiditate? Ut quia
-            sapiente et tempora natus ex incidunt iure est necessitatibus
-            assumenda aut expedita reprehenderit non quaerat repellendus aut
-            iste doloremque. Est inventore quia est officiis deleniti et omnis
-            quam. Et adipisci illum et magni velit ex voluptatem galisum eos
-            galisum voluptatibus in natus voluptas et maxime voluptatem? Ad
-            iusto eveniet ut earum blanditiis qui aliquam pariatur in sunt nihil
-            ad quos dolores. Et dolorem ducimus qui quas consequatur aut
-            laboriosam nihil et aliquam quos sit reiciendis ipsum. Eos atque
-            enim ut dolor illum est commodi odio et sint aliquam et sunt maiores
-            hic cumque quos. Ea debitis voluptatem et nisi velit aut natus
-            recusandae ut dolores assumenda aut harum necessitatibus. Qui
-            dolorem galisum et omnis amet qui galisum provident et modi
-            laboriosam. Aut sunt perferendis eum consectetur possimus aut
-            voluptas necessitatibus aut quia sunt et maxime debitis? Et natus
-            quam ea magnam accusantium ut suscipit dolores aut dolores aliquid.
-            Eum nihil rerum vel magnam soluta aut debitis ratione quo culpa
-            dignissimos et impedit nihil. Nam totam aliquam sit labore doloribus
-            aut nihil fuga aut ipsam nihil et numquam delectus. Est rerum
-            voluptas et doloribus omnis qui veritatis reprehenderit ea
-            voluptatem sint voluptas provident ut recusandae dolorem ut expedita
-            aspernatur!Lorem ipsum dolor sit amet. Qui natus ipsam ex quam
-            aspernatur qui incidunt quasi ut ratione voluptatem? Est velit
-            cupiditate aut ipsam tempore qui architecto commodi. Eum
-            reprehenderit internos vel deserunt galisum est ratione blanditiis.
-            Qui animi suscipit cum atque rerum sit Quis sunt et harum impedit
-            non omnis consequatur! Aut dolor neque eos sapiente consequuntur et
-            facilis veritatis hic quos aliquam qui ipsum architecto nam harum
-            laudantium 33 quae dolore. Ex quaerat eaque At delectus recusandae
-            non voluptatem minus. A corporis internos est maxime quia aut
-            molestiae dolorem aut inventore quaerat! Et ducimus maiores et
-            asperiores nihil in optio voluptatem ea error rerum. Vel molestias
-            ducimus ut quos similique aut rerum deleniti. Eum maxime quia et
-            ipsam soluta 33 praesentium voluptates. Est consequatur ducimus rem
-            inventore beatae et tempora dolorem! Aut doloremque quis rem saepe
-            illo est rerum voluptatem et laboriosam quaerat. Rem pariatur odio
-            et quia molestiae qui quaerat libero qui assumenda delectus et
-            dignissimos cupiditate? Ut quia sapiente et tempora natus ex
-            incidunt iure est necessitatibus assumenda aut expedita
-            reprehenderit non quaerat repellendus aut iste doloremque. Est
-            inventore quia est officiis deleniti et omnis quam. Et adipisci
-            illum et magni velit ex voluptatem galisum eos galisum voluptatibus
-            in natus voluptas et maxime voluptatem? Ad iusto eveniet ut earum
-            blanditiis qui aliquam pariatur in sunt nihil ad quos dolores. Et
-            dolorem ducimus qui quas consequatur aut laboriosam nihil et aliquam
-            quos sit reiciendis ipsum. Eos atque enim ut dolor illum est commodi
-            odio et sint aliquam et sunt maiores hic cumque quos. Ea debitis
-            voluptatem et nisi velit aut natus recusandae ut dolores assumenda
-            aut harum necessitatibus. Qui dolorem galisum et omnis amet qui
-            galisum provident et modi laboriosam. Aut sunt perferendis eum
-            consectetur possimus aut voluptas necessitatibus aut quia sunt et
-            maxime debitis? Et natus quam ea magnam accusantium ut suscipit
-            dolores aut dolores aliquid. Eum nihil rerum vel magnam soluta aut
-            debitis ratione quo culpa dignissimos et impedit nihil. Nam totam
-            aliquam sit labore doloribus aut nihil fuga aut ipsam nihil et
-            numquam delectus. Est rerum voluptas et doloribus omnis qui
-            veritatis reprehenderit ea voluptatem sint voluptas provident ut
-            recusandae dolorem ut expedita Et adipisci illum et magni velit ex
-            voluptatem galisum eos galisum voluptatibus in natus voluptas et
-            maxime voluptatem? Ad iusto eveniet ut earum blanditiis qui aliquam
-            pariatur in sunt nihil ad quos dolores. Et dolorem ducimus qui quas
-            consequatur aut laboriosam nihil et aliquam quos sit reiciendis
-            ipsum. Eos atque enim ut dolor illum est commodi odio et sint
-            aliquam et sunt maiores hic cumque quos. voluptatem sint voluptas
-            provident ut recusandae dolorem ut expedita
-          </p>
-        </div>
+        <div></div>
       </div>
     </>
   );
