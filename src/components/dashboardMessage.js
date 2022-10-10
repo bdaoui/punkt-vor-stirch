@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef} from "react";
 import axios from 'axios';
 
-const DashboardMessage = ({ data}) => {
+const DashboardMessage = ({data, refresh, setRefresh}) => {
   const [toggle, setToggle] = useState([false, ""]);
   const [chosenMessage, setChosenMessage] = useState({});
 
@@ -21,7 +21,11 @@ const DashboardMessage = ({ data}) => {
 
 
 const handleEdit =  (e) =>  {
+  console.log(e.target.value)
    setTargetValueEdit(e.target.value)
+   setRefresh(!refresh)
+  //setReload(!reload)   closest adds to new tab but doesnt refresh tabs and adds +1
+  
 }
 
 useEffect(() => {
@@ -34,7 +38,7 @@ useEffect(() => {
   } else {
     isMounted.current = true;
   }
-}, [targetValueEdit])
+}, [targetValueEdit, chosenMessage._id])
 
 
   return (
@@ -75,10 +79,10 @@ useEffect(() => {
             </svg>
 
               <select value={targetValueEdit} onChange={handleEdit} className="w-1/4">
-                <option value="unread">Unread</option>
+                <option value={"unread" || ""}>Unread</option>
                 <option value="read">Read</option>
-                <option value="unresolved">Unresolved</option>
                 <option value="resolved">Resolved</option>
+                <option value="unresolved">Unresolved</option>
                 <option value="important">Important</option>
               </select>
 
@@ -99,4 +103,4 @@ useEffect(() => {
   );
 };
 
-export default React.memo(DashboardMessage);
+export default DashboardMessage;
