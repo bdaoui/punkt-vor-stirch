@@ -22,32 +22,44 @@ const DashboardMessage = ({data, reload, setReload}) => {
 
 
 const handleEdit =  (e) =>  {
-setTargetValueEdit(e.target.value)
+	e.preventDefault()
+
+	const id = chosenMessage._id
+
+	axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
+	.then(response => {
+		console.log('edit response',response.data)
+			setReload(!reload)  //closest adds to new tab but doesnt refresh tabs and adds +1
+																})
+												.catch(err => console.log(err))
+
+
+// setTargetValueEdit(e.target.value)
 }
 
-useEffect(() => {
+// useEffect(() => {
 	
-  if (isMounted.current ){ 
-			const id = chosenMessage._id
-			console.log(id, targetValueEdit)
-			axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
-			.then(response => {
-				console.log('edit response',response.data)
-				setReload(!reload)  //closest adds to new tab but doesnt refresh tabs and adds +1
-				              })
-              .catch(err => console.log(err))
+//   if (isMounted.current ){ 
+// 			const id = chosenMessage._id
+// 			console.log(id, targetValueEdit)
+// 			axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
+// 			.then(response => {
+// 				console.log('edit response',response.data)
+// 				setReload(!reload)  //closest adds to new tab but doesnt refresh tabs and adds +1
+// 				              })
+//               .catch(err => console.log(err))
 
 
 
-  } else {
-    isMounted.current = true;
-  }
+//   } else {
+//     isMounted.current = true;
+//   }
 
-  // return () => {
-  //   setReload(!reload)
-  //   setTargetValueEdit("")
-  // }
-}, [targetValueEdit])
+//   // return () => {
+//   //   setReload(!reload)
+//   //   setTargetValueEdit("")
+//   // }
+// }, [targetValueEdit])
 
 
   return (
@@ -102,23 +114,23 @@ useEffect(() => {
 														<legend>Please select a mailbox to move to:</legend>
 																<div>
 																		<input type="radio" id="status1"
-																			name="status" value="read" />
+																			name="status"  onClick={ (e) => setTargetValueEdit("read")} />
 																		<label for="status1">Read</label>
 
 																		<input type="radio" id="status2"
-																			name="status" value="unread" />
+																			name="status"  onClick={ (e) => setTargetValueEdit("unread")}/>
 																		<label for="status2">Unread</label>
 
 																		<input type="radio" id="status3"
-																			name="status" value="resolved" />
+																			name="status"  onClick={ (e) => setTargetValueEdit("resolved")} />
 																		<label for="status3">Resolved</label>
 																	
 																		<input type="radio" id="status4"
-																			name="status" value="unresolved" />
+																			name="status"  onClick={ (e) => setTargetValueEdit("unresolved")} />
 																		<label for="status4">Unresolved</label>
 																	
 																		<input type="radio" id="status5"
-																			name="status" value="important" />
+																			name="status"  onClick={ (e) => setTargetValueEdit("important")}/>
 																		<label for="status5">Important</label>
 																</div>
 																<div>
