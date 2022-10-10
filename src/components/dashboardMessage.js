@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef} from "react";
 import axios from 'axios';
 
-const DashboardMessage = ({ data }) => {
+const DashboardMessage = ({ data}) => {
   const [toggle, setToggle] = useState([false, ""]);
   const [chosenMessage, setChosenMessage] = useState({});
 
   const [targetValueEdit, setTargetValueEdit] = useState("")
-  
 
+  const isMounted = useRef(false);
+  
   // select Message and Set Toggler
   const handleShowMessage = async (e, id) => {
     await setToggle([true, id]);
@@ -24,10 +25,15 @@ const handleEdit =  (e) =>  {
 }
 
 useEffect(() => {
-  const id = chosenMessage._id
-  axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
-            .then(response => console.log(response))
-            .catch(err => console.log(err))
+
+  if (isMounted.current){ 
+    const id = chosenMessage._id
+    axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
+              .then(response => console.log(response))
+              .catch(err => console.log(err))
+  } else {
+    isMounted.current = true;
+  }
 }, [targetValueEdit])
 
 
