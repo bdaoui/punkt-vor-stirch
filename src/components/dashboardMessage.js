@@ -38,6 +38,9 @@ const DashboardMessage = ({ data, reload, setReload }) => {
 
 			axios.delete(`http://localhost:5005/dashboard/${id}`)
 				.then(response => console.log(response))
+				.catch(err => console.log(err))
+				setReload(!reload);
+
 		}
 
   return (
