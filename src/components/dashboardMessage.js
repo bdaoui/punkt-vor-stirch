@@ -21,23 +21,24 @@ const DashboardMessage = ({data, reload, setReload}) => {
   }
 
 
-const handleEdit = (e) =>  {
-   setTargetValueEdit(e.target.value)
-  //setReload(!reload)   closest adds to new tab but doesnt refresh tabs and adds +1
-  
+const handleEdit =  (e) =>  {
+setTargetValueEdit(e.target.value)
 }
 
 useEffect(() => {
-
+	
   if (isMounted.current ){ 
-    const id = chosenMessage._id
-    console.log(id, targetValueEdit)
-    axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
-              .then(response => {
-                console.log('edit response',response.data)
-                
-              })
+			const id = chosenMessage._id
+			console.log(id, targetValueEdit)
+			axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
+			.then(response => {
+				console.log('edit response',response.data)
+				setReload(!reload)  //closest adds to new tab but doesnt refresh tabs and adds +1
+				              })
               .catch(err => console.log(err))
+
+
+
   } else {
     isMounted.current = true;
   }
@@ -86,14 +87,49 @@ useEffect(() => {
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
 
-              <select value={targetValueEdit} onChange={handleEdit} className="w-1/4">
-                <option value="" disabled selected>Seleect</option>
+              {/* <select value={targetValueEdit} onChange={handleEdit} className="w-1/4">
                 <option value="unread">Unread</option>
                 <option value="read">Read</option>
                 <option value="resolved">Resolved</option>
                 <option value="unresolved">Unresolved</option>
                 <option value="important">Important</option>
-              </select>
+              </select> */}
+												
+
+														<form onSubmit={handleEdit}>
+
+														<fieldset>
+														<legend>Please select a mailbox to move to:</legend>
+																<div>
+																		<input type="radio" id="status1"
+																			name="status" value="read" />
+																		<label for="status1">Read</label>
+
+																		<input type="radio" id="status2"
+																			name="status" value="unread" />
+																		<label for="status2">Unread</label>
+
+																		<input type="radio" id="status3"
+																			name="status" value="resolved" />
+																		<label for="status3">Resolved</label>
+																	
+																		<input type="radio" id="status4"
+																			name="status" value="unresolved" />
+																		<label for="status4">Unresolved</label>
+																	
+																		<input type="radio" id="status5"
+																			name="status" value="important" />
+																		<label for="status5">Important</label>
+																</div>
+																<div>
+																		<button type="submit" className="border-4 border-black">Submit</button>
+																</div>
+														</fieldset>
+												
+												</form>
+
+
+
 
             <h1>
               {chosenMessage?.name} {chosenMessage?.surname}
