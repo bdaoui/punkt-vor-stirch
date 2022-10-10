@@ -1,17 +1,19 @@
 import React, { useEffect, useState, useRef} from "react";
 import axios from 'axios';
 
-const DashboardMessage = ({ data, refresh, setRefresh}) => {
+const DashboardMessage = ({data, reload, setReload}) => {
   const [toggle, setToggle] = useState([false, ""]);
   const [chosenMessage, setChosenMessage] = useState({});
+
   const [targetValueEdit, setTargetValueEdit] = useState("")
 
   const isMounted = useRef(false);
   
   // select Message and Set Toggler
   const handleShowMessage = async (e, id) => {
+    e.preventDefault()
     await setToggle([true, id]);
-    setChosenMessage( data.find(message => message._id === id) )
+    setChosenMessage( data.find(item => item._id === id) )
   };
 
   const toggleFalse = () => {
@@ -19,23 +21,31 @@ const DashboardMessage = ({ data, refresh, setRefresh}) => {
   }
 
 
+const handleEdit = (e) =>  {
+   setTargetValueEdit(e.target.value)
+  //setReload(!reload)   closest adds to new tab but doesnt refresh tabs and adds +1
   
-  const handleEdit =  (e) =>  {
-    setTargetValueEdit(e.target.value);
-				setRefresh(!refresh)
- 
-  }
+}
 
 useEffect(() => {
 
-  if (isMounted.current){ 
+  if (isMounted.current ){ 
     const id = chosenMessage._id
+    console.log(id, targetValueEdit)
     axios.post("http://localhost:5005/dashboard/edit", {id , targetValueEdit} )
-              .then(response => setToggle([false, ""]))
+              .then(response => {
+                console.log('edit response',response.data)
+                
+              })
               .catch(err => console.log(err))
   } else {
     isMounted.current = true;
   }
+
+  // return () => {
+  //   setReload(!reload)
+  //   setTargetValueEdit("")
+  // }
 }, [targetValueEdit])
 
 
@@ -72,15 +82,16 @@ useEffect(() => {
 
         {toggle[0] && (
           <div className="border-4 border-color-white md:w-2/3 flex flex-col justify-center align-center overflow-y-scroll">
-            <svg onClick={toggleFalse} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            <svg onClick={toggleFalse} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
 
               <select value={targetValueEdit} onChange={handleEdit} className="w-1/4">
+                <option value="" disabled selected>Seleect</option>
                 <option value="unread">Unread</option>
                 <option value="read">Read</option>
-                <option value="unresolved">Unresolved</option>
                 <option value="resolved">Resolved</option>
+                <option value="unresolved">Unresolved</option>
                 <option value="important">Important</option>
               </select>
 
@@ -101,4 +112,4 @@ useEffect(() => {
   );
 };
 
-export default React.memo(DashboardMessage);
+export default DashboardMessage;
