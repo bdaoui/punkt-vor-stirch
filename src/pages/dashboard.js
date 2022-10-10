@@ -49,6 +49,10 @@ const Dashboard = () => {
     setSelected(e.target.value);
   };
 
+
+  const unfocused = "inline-block p-4 my-5 w-full bg-pink   hover:text-gray-400 hover:bg-pink/75 active rounded "
+  const focused = "inline-block p-4 my-5 w-full bg-white text-pink ring-4 ring-pink hover:text-gray-400 hover:bg-pink/75 active rounded "
+
   return (
     <div>
       <h1 className="w-full text-5xl underline decoration-pink mt-10 py-10">
@@ -72,11 +76,13 @@ const Dashboard = () => {
       <ul className="hidden text-sm font-medium text-center text-white rounded-lg divide-x divide-gray-200 shadow sm:flex ">
         <li className="w-full">
           <button
-            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded "
+            className={openTab === 1 ? focused  : unfocused }
             aria-current="page"
             onClick={(e) => {
               e.preventDefault();
               setOpenTab(1);
+
+
             }}
           >
             Unread
@@ -85,7 +91,7 @@ const Dashboard = () => {
 
         <li className="w-full">
           <button
-            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded"
+            className={openTab === 2 ? focused  : unfocused }
             aria-current="page"
             onClick={(e) => {
               e.preventDefault();
@@ -97,7 +103,7 @@ const Dashboard = () => {
         </li>
         <li className="w-full">
           <button
-            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded"
+            className={openTab === 3 ? focused  : unfocused }
             aria-current="page"
             onClick={(e) => {
               e.preventDefault();
@@ -109,7 +115,7 @@ const Dashboard = () => {
         </li>
         <li className="w-full">
           <button
-            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded"
+            className={openTab === 4 ? focused  : unfocused }
             aria-current="page"
             onClick={(e) => {
               e.preventDefault();
@@ -121,7 +127,7 @@ const Dashboard = () => {
         </li>
         <li className="w-full">
           <button
-            className="inline-block p-4 my-5 w-full bg-pink focus:ring-4 focus:ring-pink  focus:text-pink focus:bg-white hover:text-gray-400 hover:bg-pink/75 active rounded"
+            className={openTab === 5 ? focused  : unfocused }
             aria-current="page"
             onClick={(e) => {
               e.preventDefault();
