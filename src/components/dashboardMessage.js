@@ -187,7 +187,7 @@ const DashboardMessage = ({ data, reload, setReload }) => {
 
             <div className="flex flex-col text-sm md:text-base text-left absolute top-52 ">
           <h2 className="border-b-2 border-pink">
-            <span className="font-medium underline decoration-pink">Subject:</span>{" "}
+            <span className="font-medium underline decoration-pink ">Subject:</span>{" "}
             {chosenMessage?.subject}
           </h2>
           </div>
