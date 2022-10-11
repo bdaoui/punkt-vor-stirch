@@ -65,7 +65,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="pb-10 py-20 my-20 h-screen" id="contact">
+    <div className="pb-10 py-20 my-20" id="contact">
       <h2 className="text-4xl md:text-5xl text-center my-10 underline decoration-pink">
         Get in touch!
       </h2>
