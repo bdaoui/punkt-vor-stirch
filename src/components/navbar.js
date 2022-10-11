@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { NavHashLink } from 'react-router-hash-link';
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -14,12 +15,12 @@ const Navbar = () => {
       <nav className="relative flex flex-wrap items-center justify-between px-2 bg-white mb-3 drop-shadow-xl">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <a
+            <NavLink
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-black"
-              href="/"
+              to="/"
             >
               <img className="object-scale-down h-6 w-20" src={process.env.PUBLIC_URL + "/pvs_vlogo.png"} alt="logo"/>
-            </a>
+            </NavLink>
           
 
 

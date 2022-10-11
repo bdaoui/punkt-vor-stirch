@@ -13,7 +13,7 @@ const Dashboard = () => {
     { value: 5, text: "Important" },
   ];
 
-  const [openTab, setOpenTab] = useState(0);
+  const [openTab, setOpenTab] = useState(1);
   const [selected, setSelected] = useState(options[0].value);
   const[reload, setReload] = useState(false)
 
@@ -41,39 +41,39 @@ const Dashboard = () => {
     
   }, [reload]);
 
-  useEffect(() => {
-    setOpenTab(selected);
-  }, [selected]);
+  // useEffect((e) => {
+  //   setOpenTab(selected);
+  // }, [selected]);
 
-  const handleChange = async (e) => {
-    setSelected(e.target.value);
-  };
+  // const handleChange =  (e) => {
+  //    setSelected(e.target.value);
+  // };
 
 
-  const unfocused = "inline-block p-4 my-5 w-full bg-pink   hover:text-gray-400 hover:bg-pink/75 active rounded "
-  const focused = "inline-block p-4 my-5 w-full bg-white text-pink ring-4 ring-pink hover:text-gray-400 hover:bg-pink/75 active rounded "
+  const unfocused = "inline-block p-2 md:p-4 my-2 md:my-5 w-full bg-pink   hover:text-gray-400 hover:bg-pink/75 active rounded "
+  const focused = "inline-block p-2 md:p-4 my-2 md:my-5 w-full bg-white text-pink ring-4 ring-pink hover:text-gray-400 hover:bg-pink/75 active rounded "
 
   return (
     <div>
-      <h1 className="w-full text-5xl underline decoration-pink mt-10 py-10">
+      <h1 className="w-full text-2xl md:text-5xl underline decoration-pink mt-10 py-10">
         Welcome to the dashboard
       </h1>
-      <div className="sm:hidden">
+      {/* <div className="md:hidden">
         <select
           id="tabs"
-          className="bg-pink border border-gray-300 text-white sm:text-sm focus:ring-pink/75 focus:border-pink/50 block w-full p-2.5 my-3 "
+          className="block bg-pink border border-gray-300 text-white sm:text-sm focus:ring-pink/75 focus:border-pink/50  w-full p-2.5 my-3 "
           onChange={handleChange}
           value={selected}
         >
-          {options.map((option) => (
+          {options?.map((option) => (
             <option key={option.value} value={option.value}>
               {option.text}
             </option>
           ))}
         </select>
-      </div>
+      </div> */}
 
-      <ul className="hidden text-sm font-medium text-center text-white rounded-lg divide-x divide-gray-200 shadow sm:flex ">
+      <ul className="flex flex-row text-xs md:text-sm font-medium text-center text-white rounded-lg divide-x divide-gray-200 shadow  ">
         <li className="w-full">
           <button
             className={openTab === 1 ? focused  : unfocused }
@@ -81,8 +81,6 @@ const Dashboard = () => {
             onClick={(e) => {
               e.preventDefault();
               setOpenTab(1);
-
-
             }}
           >
             Unread
@@ -139,7 +137,7 @@ const Dashboard = () => {
         </li>
       </ul>
 
-      <div className="h-full bg-pink/75" id="1">
+      <div className="h-full bg-pink/20" id="1">
         <section className={openTab === 1 ? "block" : "hidden"}>
           <DashboardMessage data={unread} reload={reload} setReload={setReload}  />
         </section>
