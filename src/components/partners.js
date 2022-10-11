@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Partners = () => {
   
@@ -10,16 +11,17 @@ const Partners = () => {
       </div>
       
       <div className='flex flex-col md:flex-row justify-center'>
-        <img className='object-scale-down h-20 my-4 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/wim_Logo.png"
-        alt="logo" />
-        <img className='object-scale-down h-20 my-4 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/triply_Logo.png"
-        alt="logo" />
-        <img className='object-scale-down h-10 my-4 md:mt-6 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/zgis_logo.png"
-        alt="logo" />
-        <img className='object-scale-down h-10 my-4 md:mt-5 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/carployee_logo.png"
-        alt="logo" />
-        <img className='object-scale-down h-20 my-4 md:mt-2 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/FFG_Logo.png"
-        alt="logo" />
+        <Link to="https://www.womeninmobility.org/"> <img className='object-scale-down h-20 my-4 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/wim_Logo.png"
+        alt="logo" /></Link>
+
+        <Link to="https://triply.at/"><img className='object-scale-down h-20 my-4 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/triply_Logo.png"
+        alt="logo" /></Link>
+        <Link to="https://www.plus.ac.at/geoinformatik/"><img className='object-scale-down h-10 my-4 md:mt-6 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/zgis_logo.png"
+        alt="logo" /></Link>
+        <Link to="https://www.carployee.com/"><img className='object-scale-down h-10 my-4 md:mt-5 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/carployee_logo.png"
+        alt="logo" /></Link>
+        <Link to="https://www.ffg.at/"><img className='object-scale-down h-20 my-4 md:mt-2 md:mx-6' src ="https://www.punkt-vor-strich.at/assets/images/FFG_Logo.png"
+        alt="logo" /></Link>
       </div>
 
 

@@ -13,7 +13,7 @@ const Dashboard = () => {
     { value: 5, text: "Important" },
   ];
 
-  const [openTab, setOpenTab] = useState(0);
+  const [openTab, setOpenTab] = useState(1);
   const [selected, setSelected] = useState(options[0].value);
   const[reload, setReload] = useState(false)
 
@@ -73,7 +73,7 @@ const Dashboard = () => {
         </select>
       </div> */}
 
-      <ul className="flex flex-row  text-xs md:text-sm font-medium text-center text-white rounded-lg divide-x divide-gray-200 shadow  ">
+      <ul className="flex flex-row text-xs md:text-sm font-medium text-center text-white rounded-lg divide-x divide-gray-200 shadow  ">
         <li className="w-full">
           <button
             className={openTab === 1 ? focused  : unfocused }
