@@ -240,7 +240,7 @@ const Blog = () => {
                   <div className="dark:bg-white dark:text-gray-50">
                     <div className="container grid grid-cols-12 mx-auto dark:bg-pink">
                       <div
-                        className="bg-no-repeat bg-cover dark:bg-gray-700 col-span-full lg:col-span-4"
+                        className="bg-no-repeat bg-cover col-span-full lg:col-span-4"
                         style={{
                           backgroundImage: `url(${blog.image})`,
                           backgroundPosition: "center center",
