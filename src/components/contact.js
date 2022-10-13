@@ -299,14 +299,16 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center w-full">
+          <div className="flex items-center align-center justify-center w-full">
             <button
               type="submit"
               className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-pink rounded hover:bg-pink focus:ring-2 focus:ring-offset-2 focus:ring-pink focus:outline-none m-5"
             >
               Send message
             </button>
-            <p  className=" font-bold text-green-800" > {validateSending}</p>
+            {validateSending && 
+              <p className=" font-bold text-green-800 bg-green-500 p-3 rounded" > {validateSending}</p>
+            }
           </div>
         </form>
       </div>
