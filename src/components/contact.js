@@ -18,7 +18,7 @@ const Contact = () => {
   const [contactSubject, setContactSubject] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
-  const [validateSending, setValidateSending] = useState("false")
+  const [validateSending, setValidateSending] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +38,6 @@ const Contact = () => {
     axios
       .get("http://localhost:5005/edit/info")
       .then((response) => {
-        console.log(response);
         const { email, phone, address } = response.data;
         setAddress(address);
         setPhone(phone);
@@ -63,12 +62,13 @@ const Contact = () => {
     axios
       .post("http://localhost:5005/contact", fileContact)
       .then((response) => {
-        console.log(response)
-        setValidateSending(response)})
+        console.log(response.data)
+        setValidateSending(response.data)})
       .catch((err) => console.log(err));
 
-      console.log(setValidateSending)
-  };
+
+    return setInterval(setValidateSending(""), 1000)
+   };
 
   return (
     <div className="pb-10 py-20 my-20" id="contact">
@@ -306,7 +306,7 @@ const Contact = () => {
             >
               Send message
             </button>
-            <p>{setValidateSending}</p>
+            <p>{validateSending}</p>
           </div>
         </form>
       </div>
