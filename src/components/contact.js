@@ -18,6 +18,8 @@ const Contact = () => {
   const [contactSubject, setContactSubject] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
+  const [validateSending, setValidateSending] = useState("")
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -36,7 +38,6 @@ const Contact = () => {
     axios
       .get("http://localhost:5005/edit/info")
       .then((response) => {
-        console.log(response);
         const { email, phone, address } = response.data;
         setAddress(address);
         setPhone(phone);
@@ -60,9 +61,14 @@ const Contact = () => {
 
     axios
       .post("http://localhost:5005/contact", fileContact)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response.data)
+        setValidateSending(response.data)})
       .catch((err) => console.log(err));
-  };
+
+
+    return setInterval(() => {return setValidateSending("")}, 5000)
+   };
 
   return (
     <div className="pb-10 py-20 my-20" id="contact">
@@ -223,7 +229,7 @@ const Contact = () => {
         <p className="text-3xl font-bold leading-7 text-center text-black m-5">
           Kontakt
         </p>
-        <form action="" onSubmit={handleContact}>
+        <form action="" onSubmit={handleContact} >
           <div className="md:flex items-center mt-12 ">
             <div className="w-full md:w-1/2 flex flex-col">
               <label className="font-semibold leading-none text-black ">
@@ -293,13 +299,16 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center w-full">
+          <div className="flex items-center align-center justify-center w-full">
             <button
               type="submit"
               className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-pink rounded hover:bg-pink focus:ring-2 focus:ring-offset-2 focus:ring-pink focus:outline-none m-5"
             >
               Send message
             </button>
+            {validateSending && 
+              <p className=" font-bold text-green-800 bg-green-500 p-3 rounded" > {validateSending}</p>
+            }
           </div>
         </form>
       </div>
