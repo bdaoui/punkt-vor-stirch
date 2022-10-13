@@ -18,6 +18,8 @@ const Contact = () => {
   const [contactSubject, setContactSubject] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
+  const [validateSending, setValidateSending] = useState("false")
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -60,8 +62,12 @@ const Contact = () => {
 
     axios
       .post("http://localhost:5005/contact", fileContact)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response)
+        setValidateSending(response)})
       .catch((err) => console.log(err));
+
+      console.log(setValidateSending)
   };
 
   return (
@@ -223,7 +229,7 @@ const Contact = () => {
         <p className="text-3xl font-bold leading-7 text-center text-black m-5">
           Kontakt
         </p>
-        <form action="" onSubmit={handleContact}>
+        <form action="" onSubmit={handleContact} >
           <div className="md:flex items-center mt-12 ">
             <div className="w-full md:w-1/2 flex flex-col">
               <label className="font-semibold leading-none text-black ">
@@ -300,6 +306,7 @@ const Contact = () => {
             >
               Send message
             </button>
+            <p>{setValidateSending}</p>
           </div>
         </form>
       </div>
