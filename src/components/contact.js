@@ -67,7 +67,7 @@ const Contact = () => {
       .catch((err) => console.log(err));
 
 
-    return setInterval(() => {return setValidateSending("")}, 1000)
+    return setInterval(() => {return setValidateSending("")}, 5000)
    };
 
   return (
@@ -306,7 +306,7 @@ const Contact = () => {
             >
               Send message
             </button>
-            <p  className="" > {validateSending}</p>
+            <p  className=" font-bold text-green-800" > {validateSending}</p>
           </div>
         </form>
       </div>
