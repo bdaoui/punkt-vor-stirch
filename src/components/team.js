@@ -1,9 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
+import React, { useEffect, useState } from "react";
+import axios from 'axios'
+
 
 const Team = () => {
   const [showSocial, setShowSocial] = useState([false, ""]);
-
+  const [name, setName] = useState("");
+  const [position, setPosition] = useState([]);
+  const [image, setImage] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  
   const handleHover = (member) => {
     console.log(showSocial);
     if (!showSocial[0]) {
@@ -11,8 +18,44 @@ const Team = () => {
     }
   };
 
+  useEffect(() => {
+
+    axios.get("http://localhost:5005/team")
+      .then(response => {
+        setName(response.data.name)
+        setPosition(response.data.position)
+        setImage(response.data.image)
+        setTwitter(response.data.twitter)
+        setLinkedin(response.data.linkedin)
+      })
+
+  },[name])
+
+
+
+  const handleSubmit = (e) => {
+    e.target.preventDefault()
+
+    const teamData = new FormData()
+      teamData.append("name", name)
+      teamData.append("position", position)
+      teamData.append("image", e.target.image.files[0])
+      teamData.append("twitter", twitter)
+      teamData.append("linkedin", linkedin)
+    
+    axios.post(`http://localhost:5005/team` , teamData)
+      .then(response => {
+        setName(response.data.name)
+        setPosition(response.data.position)
+        setImage(response.data.image)
+        setTwitter(response.data.twitter)
+        setLinkedin(response.data.linkedin)
+        
+      })
+  }
+
   return (
-    <div className="flex flex-col text-center h-full md:h-screen mb-20 pb-20" id="team">
+    <div className="flex flex-col text-center h-full md:h-screen mb-5 pb-5" id="team">
       <h1 className="text-4xl md:text-5xl font-semibold underline decoration-pink">Hinter den Kulissen</h1>
       <p className="text-center p-10 lg:px-96">
         Wir sind ein Team aus Expertinnen mit langjähriger Erfahrung in
@@ -164,11 +207,123 @@ const Team = () => {
         </div>
 
 
-
-
+          {/* Edit Section */}
 
         
       </div>
+        <div className="flex  items-center justify-center py-12 px-4 sm:px-6 lg:px-8" >
+          <div className="w-full max-w-md space-y-8">
+            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+              <div className="-space-y-px rounded-md shadow-sm">
+                <div>
+                  <label for="name" className="sr-only">
+                    name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900
+           placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
+                    placeholder="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label for="position" className="sr-only">
+                    position
+                  </label>
+                  <input
+                    id="position"
+                    name="position"
+                    type="text"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
+           placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
+                    placeholder="position"
+                    value={position}
+                    onChange={(e) => setPosition(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label for="twitter" className="sr-only">
+                    twitter
+                  </label>
+                  <input
+                    id="twitter"
+                    name="twitter"
+                    type="text"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
+           placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
+                    placeholder="twitter"
+                    value={twitter}
+                    onChange={(e) => setTwitter(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label for="linkedin" className="sr-only">
+                    linkedin
+                  </label>
+                  <input
+                    id="linkedin"
+                    name="linkedin"
+                    type="text"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
+           placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
+                    placeholder="linkedin"
+                    value={linkedin}
+                    onChange={(e) => setLinkedin(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label for="image" className="sr-only">
+                    image
+                  </label>
+                  <input
+                    id="image"
+                    name="image"
+                    type="file"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
+           placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm" />
+                </div>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  className="group relative flex w-full justify-center rounded-md border border-transparent bg-pink py-2 px-4 text-sm font-medium text-white hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <svg
+                      className="h-5 w-5 text-black group-hover:text-pink"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                  Edit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
     </div>
   );
 };
