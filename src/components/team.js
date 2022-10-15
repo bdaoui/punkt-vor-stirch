@@ -20,7 +20,7 @@ const Team = () => {
   }
 
   return (
-    <div className="flex flex-col text-center h-full md:h-screen mb-20 pb-20" id="team">
+    <div className="flex flex-col text-center h-full md:h-screen mb-5 pb-5" id="team">
       <h1 className="text-4xl md:text-5xl font-semibold underline decoration-pink">Hinter den Kulissen</h1>
       <p className="text-center p-10 lg:px-96">
         Wir sind ein Team aus Expertinnen mit langjähriger Erfahrung in
@@ -171,12 +171,12 @@ const Team = () => {
           )}
         </div>
 
+
+          {/* Edit Section */}
+
         
-
-
-
-
-        <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      </div>
+        <div className="flex  items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
           <div className="w-full max-w-md space-y-8">
             <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
               <div className="-space-y-px rounded-md shadow-sm">
@@ -259,16 +259,6 @@ const Team = () => {
           </div>
         </div>
 
-
-
-
-
-
-
-
-
-        
-      </div>
     </div>
   );
 };
