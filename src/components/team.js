@@ -4,8 +4,10 @@ import axios from 'axios'
 const Team = () => {
   const [showSocial, setShowSocial] = useState([false, ""]);
   const [name, setName] = useState("");
-  const [title, setTitle] = useState([]);
+  const [position, setPosition] = useState([]);
   const [image, setImage] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [linkedin, setLinkedin] = useState("");
   
   const handleHover = (member) => {
     console.log(showSocial);
@@ -19,8 +21,10 @@ const Team = () => {
     axios.get("http://localhost:5005/team")
       .then(response => {
         setName(response.data.name)
-        setTitle(response.data.title)
+        setPosition(response.data.position)
         setImage(response.data.image)
+        setTwitter(response.data.twitter)
+        setLinkedin(response.data.linkedin)
       })
 
   },[name])
@@ -32,14 +36,18 @@ const Team = () => {
 
     const teamData = new FormData()
       teamData.append("name", name)
-      teamData.append("title", title)
+      teamData.append("position", position)
       teamData.append("image", e.target.image.files[0])
+      teamData.append("twitter", twitter)
+      teamData.append("linkedin", linkedin)
     
     axios.post(`http://localhost:5005/team` , teamData)
       .then(response => {
         setName(response.data.name)
-        setTitle(response.data.title)
+        setPosition(response.data.position)
         setImage(response.data.image)
+        setTwitter(response.data.twitter)
+        setLinkedin(response.data.linkedin)
         
       })
   }
@@ -201,7 +209,7 @@ const Team = () => {
 
         
       </div>
-        <div className="flex  items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="flex  items-center justify-center py-12 px-4 sm:px-6 lg:px-8" >
           <div className="w-full max-w-md space-y-8">
             <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
               <div className="-space-y-px rounded-md shadow-sm">
@@ -223,19 +231,53 @@ const Team = () => {
                 </div>
 
                 <div>
-                  <label for="phone" className="sr-only">
-                    title
+                  <label for="position" className="sr-only">
+                    position
                   </label>
                   <input
-                    id="title"
-                    name="title"
+                    id="position"
+                    name="position"
                     type="text"
                     required
                     className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
            placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
-                    placeholder="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="position"
+                    value={position}
+                    onChange={(e) => setPosition(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label for="twitter" className="sr-only">
+                    twitter
+                  </label>
+                  <input
+                    id="twitter"
+                    name="twitter"
+                    type="text"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
+           placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
+                    placeholder="twitter"
+                    value={twitter}
+                    onChange={(e) => setTwitter(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label for="linkedin" className="sr-only">
+                    linkedin
+                  </label>
+                  <input
+                    id="linkedin"
+                    name="linkedin"
+                    type="text"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
+           placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
+                    placeholder="linkedin"
+                    value={linkedin}
+                    onChange={(e) => setLinkedin(e.target.value)}
                   />
                 </div>
 
