@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios'
 
 const Team = () => {
   const [showSocial, setShowSocial] = useState([false, ""]);
@@ -13,10 +14,34 @@ const Team = () => {
     }
   };
 
+  useEffect(() => {
+
+    axios.get("http://localhost:5005/team")
+      .then(response => {
+        setName(response.data.name)
+        setTitle(response.data.title)
+        setImage(response.data.image)
+      })
+
+  },[name])
 
 
-  const handleSubmit = () =>{
-    console.log("Handle Submit")
+
+  const handleSubmit = (e) => {
+    e.target.preventDefault()
+
+    const teamData = new FormData()
+      teamData.append("name", name)
+      teamData.append("title", title)
+      teamData.append("image", e.target.image.files[0])
+    
+    axios.post(`http://localhost:5005/team` , teamData)
+      .then(response => {
+        setName(response.data.name)
+        setTitle(response.data.title)
+        setImage(response.data.image)
+        
+      })
   }
 
   return (
@@ -221,14 +246,10 @@ const Team = () => {
                   <input
                     id="image"
                     name="image"
-                    type="text"
+                    type="file"
                     required
                     className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
-           placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
-                    placeholder="image"
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
-                  />
+           placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm" />
                 </div>
               </div>
 
