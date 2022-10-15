@@ -2,13 +2,22 @@ import React, { useState } from "react";
 
 const Team = () => {
   const [showSocial, setShowSocial] = useState([false, ""]);
-
+  const [name, setName] = useState("");
+  const [title, setTitle] = useState([]);
+  const [image, setImage] = useState("");
+  
   const handleHover = (member) => {
     console.log(showSocial);
     if (!showSocial[0]) {
       setShowSocial([true, member]);
     }
   };
+
+
+
+  const handleSubmit = () =>{
+    console.log("Handle Submit")
+  }
 
   return (
     <div className="flex flex-col text-center h-full md:h-screen mb-20 pb-20" id="team">
@@ -167,61 +176,58 @@ const Team = () => {
 
 
 
-
-
-
-
-
-
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
           <div className="w-full max-w-md space-y-8">
-            <form className="mt-8 space-y-6" >
+            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
               <div className="-space-y-px rounded-md shadow-sm">
                 <div>
-                  <label for="email" className="sr-only">
-                    email
+                  <label for="name" className="sr-only">
+                    name
                   </label>
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
+                    id="name"
+                    name="name"
+                    type="text"
                     required
                     className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900
            placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
-                    placeholder="email"
-                
+                    placeholder="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
 
                 <div>
                   <label for="phone" className="sr-only">
-                    phone
+                    title
                   </label>
                   <input
-                    id="phone"
-                    name="phone"
-                    type="phone"
+                    id="title"
+                    name="title"
+                    type="text"
                     required
                     className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
            placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
-                    placeholder="phone"
-             
+                    placeholder="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
 
                 <div>
-                  <label for="address" className="sr-only">
-                    address
+                  <label for="image" className="sr-only">
+                    image
                   </label>
                   <input
-                    id="address"
-                    name="address"
-                    type="address"
+                    id="image"
+                    name="image"
+                    type="text"
                     required
                     className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900
            placeholder-gray-500 focus:z-10 focus:border-pink focus:outline-none focus:ring-pink sm:text-sm"
-                    placeholder="address"
-                
+                    placeholder="image"
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
                   />
                 </div>
               </div>
@@ -252,6 +258,12 @@ const Team = () => {
             </form>
           </div>
         </div>
+
+
+
+
+
+
 
 
 
