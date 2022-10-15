@@ -1,5 +1,7 @@
+
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+
 
 const Team = () => {
   const [showSocial, setShowSocial] = useState([false, ""]);
@@ -87,7 +89,7 @@ const Team = () => {
 
           {showSocial[0] && showSocial[1] === "Lina" && (
             <div className="relative inset-x-3 bottom-80  flex  ">
-              <a href="https:linkedin.com">
+              <a target="_blank" href="https://www.linkedin.com/in/lina-mosshammer/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
@@ -97,7 +99,7 @@ const Team = () => {
                 </svg>
               </a>
 
-              <a href="https:twitter.com">
+              <a target="_blank" href="https://twitter.com/linamoss06">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -132,7 +134,7 @@ const Team = () => {
 
           {showSocial[0] && showSocial[1] === "Claudia" && (
             <div className="relative inset-x-3 bottom-80  flex  ">
-              <a href="https:linkedin.com">
+              <a target="_blank" href="https://www.linkedin.com/in/claudia-falkinger/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
@@ -142,7 +144,7 @@ const Team = () => {
                 </svg>
               </a>
 
-              <a href="https:twitter.com">
+              <a target="_blank" href="https://twitter.com/hawkinger_">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -181,7 +183,7 @@ const Team = () => {
 
           {showSocial[0] && showSocial[1] === "Nadin" && (
             <div className="relative inset-x-3 bottom-80 flex ">
-              <a href="https:linkedin.com">
+              <a target="_blank" href="https://www.linkedin.com/in/nadinbrunnhofer/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
@@ -191,7 +193,7 @@ const Team = () => {
                 </svg>
               </a>
 
-              <a href="https:twitter.com">
+              <a target="_blank" href="https:twitter.com">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"

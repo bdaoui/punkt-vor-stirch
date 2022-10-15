@@ -28,6 +28,7 @@ const DashboardMessage = ({ data, reload, setReload }) => {
       .then((response) => {
         console.log("edit response", response.data);
         setReload(!reload); //closest adds to new tab but doesnt refresh tabs and adds +1
+        setToggle([false, ""])
       })
       .catch((err) => console.log(err));
   };
@@ -37,14 +38,18 @@ const DashboardMessage = ({ data, reload, setReload }) => {
 
     axios
       .delete(`http://localhost:5005/dashboard/${id}`)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response)
+        setReload(!reload)
+        setToggle([false, ""])
+      })
       .catch((err) => console.log(err));
-    setReload(!reload);
+   
   };
 
   return (
     <div className="flex flex-col gap-5 md:gap-0 md:flex-row p-4 h-screen">
-      <div className="md:w-1/3 w-full overflow-y-scroll ">
+      <div className="md:w-1/3 w-full overflow-y-scroll border-b-4 border-black h-2/4 md:h-full ">
         <h1 className="text-base md:text-4xl p-4 underline decoration-pink">
           Messages
         </h1>
@@ -76,7 +81,7 @@ const DashboardMessage = ({ data, reload, setReload }) => {
       </div>
 
       {toggle[0] && (
-        <div className="hidden border-2 border-black p-2 m-2 md:w-2/3 md:flex flex-col relative justify-center align-center overflow-y-scroll">
+        <div className="md:border-2 md:border-black p-0 md:p-5 m-2 w-full h-full md:w-2/3 md:flex flex-col relative justify-center align-center overflow-y-scroll">
           <svg
             onClick={toggleFalse}
             xmlns="http://www.w3.org/2000/svg"
@@ -109,10 +114,18 @@ const DashboardMessage = ({ data, reload, setReload }) => {
             />
           </svg>
 
-          <form className="absolute flex justify-center top-0 right-50 p-4 text-xs md:text-sm" onSubmit={handleEdit}>
+          <form className="absolute flex justify-center top-0 right-28 p-4 text-xs md:text-sm" onSubmit={handleEdit}>
             <fieldset>
               <legend className="font-semibold">Select a mailbox to move to:</legend>
               <div className="flex flex-row p-1" >
+                  <input
+                  className="hover:cursor-pointer mr-1"
+                  type="radio"
+                  id="status2"
+                  name="status"
+                  onClick={(e) => setTargetValueEdit("unread")}
+                />
+                <label className="mr-3" for="status2">Unread</label>
                 <input
                   className="hover:cursor-pointer mr-1"
                   type="radio"
@@ -121,16 +134,6 @@ const DashboardMessage = ({ data, reload, setReload }) => {
                   onClick={(e) => setTargetValueEdit("read")}
                 />
                 <label className="mr-3" for="status1">Read</label>
-
-                <input
-                  className="hover:cursor-pointer mr-1"
-                  type="radio"
-                  id="status2"
-                  name="status"
-                  onClick={(e) => setTargetValueEdit("unread")}
-                />
-                <label className="mr-3" for="status2">Unread</label>
-
                 <input
                   className="hover:cursor-pointer mr-1"
                   type="radio"
@@ -168,7 +171,7 @@ const DashboardMessage = ({ data, reload, setReload }) => {
           </form>
 
 <div className="flex flex-col text-sm md:text-base text-left mt-10" >
-        <div className="border-b-2 border-pink absolute top-1/4 w-full">
+        <div className="border-b-2 border-pink absolute top-32 w-full">
           <h1>
             <span className="font-medium underline decoration-pink">Name</span>:{" "}{chosenMessage?.name} {chosenMessage?.lastName}
           </h1> 
@@ -182,20 +185,24 @@ const DashboardMessage = ({ data, reload, setReload }) => {
             </h1>
             </div>
 
-            <div className="flex flex-col text-sm md:text-base text-left absolute top-32 ">
+            <div className="flex flex-col text-sm md:text-base text-left absolute top-52 ">
           <h2 className="border-b-2 border-pink">
-            <span className="font-medium underline decoration-pink">Subject:</span>{" "}
+            <span className="font-medium underline decoration-pink ">Subject:</span>{" "}
             {chosenMessage?.subject}
           </h2>
           </div>
 
-          <div className="flex flex-col text-sm md:text-base absolute top-96 pl-5">
+          <div className="flex flex-col text-sm md:text-base text-left absolute top-80 mt-5">
           <h1>{chosenMessage?.message}</h1>
           </div>
            </div>
 
         </div>
       )}
+
+
+
+
     </div>
   );
 };
