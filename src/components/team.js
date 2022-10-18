@@ -20,7 +20,7 @@ const Team = () => {
 
   useEffect(() => {
 
-    axios.get("http://localhost:5005/team")
+    axios.get("https://drab-red-cuttlefish-boot.cyclic.app/team")
       .then(response => {
         setName(response.data.name)
         setPosition(response.data.position)
@@ -43,7 +43,7 @@ const Team = () => {
       teamData.append("twitter", twitter)
       teamData.append("linkedin", linkedin)
     
-    axios.post(`http://localhost:5005/team` , teamData)
+    axios.post(`https://drab-red-cuttlefish-boot.cyclic.app/team` , teamData)
       .then(response => {
         setName(response.data.name)
         setPosition(response.data.position)
