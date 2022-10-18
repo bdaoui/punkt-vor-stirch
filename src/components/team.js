@@ -5,7 +5,7 @@ import { AuthContext  } from "../context/auth.context";
 
 const Team = () => {
 
-  const isLoggedIn = useContext(AuthContext)
+  const {isLoggedIn} = useContext(AuthContext)
 
   const [showSocial, setShowSocial] = useState([false, ""]);
   const [name, setName] = useState("");
