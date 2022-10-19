@@ -9,7 +9,7 @@ const Team = () => {
 
   const [showSocial, setShowSocial] = useState([false, ""]);
   const [TeamChose , setTeamChose] = useState("");
-  
+
   const [name, setName] = useState("");
   const [position, setPosition] = useState([]);
   const [image, setImage] = useState("");
@@ -216,7 +216,7 @@ const Team = () => {
 
           {/* Edit Section */}
 
-     {isLoggedIn && TeamChose
+     {isLoggedIn && TeamChose && 
 
         <div className="flex  items-center justify-center py-12 px-4 sm:px-6 lg:px-8" >
           <div className="w-full max-w-md space-y-8">
